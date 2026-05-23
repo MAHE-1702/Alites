@@ -1,10 +1,131 @@
+// import React from 'react';
+// import { Link } from 'react-router-dom';
+// import { ArrowRight, Shield } from 'lucide-react';
+// import { motion } from 'framer-motion';
+// import SectionWrapper from '../components/SectionWrapper';
+// import ServiceCard from '../components/ServiceCard';
+// import { services } from '../data/services';
+
+// export default function Services() {
+//   return (
+//     <div className="pt-16 overflow-x-hidden">
+//       {/* Page Hero */}
+//       <section className="relative py-20 sm:py-28 overflow-hidden">
+//         <div className="absolute inset-0 grid-bg opacity-40" />
+//         <div
+//           className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] pointer-events-none"
+//           style={{
+//             background:
+//               'radial-gradient(ellipse at top, rgba(0,229,255,0.1) 0%, transparent 70%)',
+//           }}
+//         />
+//         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+//           <motion.div
+//             initial={{ opacity: 0, y: 20 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 0.5 }}
+//             className="inline-flex items-center gap-2 border border-accent/30 bg-accent/5 rounded-full px-4 py-1.5 text-accent text-xs font-medium mb-6"
+//           >
+//             <Shield className="w-3.5 h-3.5" />
+//             Comprehensive Security Solutions
+//           </motion.div>
+//           <motion.h1
+//             initial={{ opacity: 0, y: 30 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 0.6, delay: 0.1 }}
+//             className="font-syne font-extrabold text-4xl sm:text-5xl md:text-6xl text-white mb-6"
+//           >
+//             Our <span className="text-gradient">Services</span>
+//           </motion.h1>
+//           <motion.p
+//             initial={{ opacity: 0, y: 30 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 0.6, delay: 0.2 }}
+//             className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed"
+//           >
+//             From penetration testing to 24/7 SOC monitoring, our full spectrum of cybersecurity services keeps your organization protected at every layer.
+//           </motion.p>
+//         </div>
+//       </section>
+
+//       {/* Services Grid */}
+//       <SectionWrapper className="pb-24">
+//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+//             {services.map((service) => (
+//               <ServiceCard
+//                 key={service.id}
+//                 icon={service.icon}
+//                 title={service.title}
+//                 description={service.description}
+//                 features={service.features}
+//                 showDetails={true}
+//               />
+//             ))}
+//           </div>
+//         </div>
+//       </SectionWrapper>
+
+//       {/* Bottom CTA */}
+//       <SectionWrapper className="pb-20">
+//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//           <div
+//             className="rounded-2xl p-10 text-center"
+//             style={{
+//               background:
+//                 'linear-gradient(135deg, rgba(0,229,255,0.08) 0%, rgba(0,128,255,0.05) 100%)',
+//               border: '1px solid rgba(0,229,255,0.2)',
+//             }}
+//           >
+//             <h2 className="font-syne font-bold text-2xl sm:text-3xl text-white mb-4">
+//               Not sure which service you need?
+//             </h2>
+//             <p className="text-slate-400 text-base max-w-xl mx-auto mb-8">
+//               Our security consultants will assess your environment and recommend the right mix of services for your threat landscape and budget.
+//             </p>
+//             <Link
+//               to="/contact"
+//               className="inline-flex items-center gap-2 bg-accent text-primary font-syne font-bold px-8 py-4 rounded-lg hover:bg-accent/90 transition-all duration-200 hover:shadow-lg hover:shadow-accent/25"
+//             >
+//               Talk to an Expert
+//               <ArrowRight className="w-5 h-5" />
+//             </Link>
+//           </div>
+//         </div>
+//       </SectionWrapper>
+//     </div>
+//   );
+// }
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Shield } from 'lucide-react';
+import { ArrowRight, Shield, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import SectionWrapper from '../components/SectionWrapper';
 import ServiceCard from '../components/ServiceCard';
 import { services } from '../data/services';
+
+const methodology = [
+  {
+    step: '01',
+    title: 'Define Objectives',
+    description: 'We start by understanding your environment, risk appetite, compliance obligations, and specific security goals — so the engagement delivers answers that matter to your business.',
+  },
+  {
+    step: '02',
+    title: 'Assess & Test',
+    description: 'Our certified experts execute the engagement using proven methodologies (OWASP, PTES, NIST). Every test is tailored — not templated — to reflect the actual threats your organisation faces.',
+  },
+  {
+    step: '03',
+    title: 'Report & Prioritise',
+    description: 'You receive a full technical report plus an executive summary with findings ranked by business impact, not just CVSS score. No jargon, no fluff — just actionable intelligence.',
+  },
+  {
+    step: '04',
+    title: 'Remediate & Retest',
+    description: 'We don\'t disappear after delivery. Our team supports your remediation effort and retests critical findings — confirming that fixes work before closing the engagement.',
+  },
+];
 
 export default function Services() {
   return (
@@ -14,10 +135,7 @@ export default function Services() {
         <div className="absolute inset-0 grid-bg opacity-40" />
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(ellipse at top, rgba(0,229,255,0.1) 0%, transparent 70%)',
-          }}
+          style={{ background: 'radial-gradient(ellipse at top, rgba(0,229,255,0.1) 0%, transparent 70%)' }}
         />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
@@ -27,7 +145,7 @@ export default function Services() {
             className="inline-flex items-center gap-2 border border-accent/30 bg-accent/5 rounded-full px-4 py-1.5 text-accent text-xs font-medium mb-6"
           >
             <Shield className="w-3.5 h-3.5" />
-            Comprehensive Security Solutions
+            End-to-End Cybersecurity Services
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -35,7 +153,7 @@ export default function Services() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-syne font-extrabold text-4xl sm:text-5xl md:text-6xl text-white mb-6"
           >
-            Our <span className="text-gradient">Services</span>
+            Put Your Defenses <span className="text-gradient">to the Test</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -43,51 +161,103 @@ export default function Services() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed"
           >
-            From penetration testing to 24/7 SOC monitoring, our full spectrum of cybersecurity services keeps your organization protected at every layer.
+            From attack simulation to round-the-clock monitoring, our services are built to find your weaknesses before attackers do — and keep your organisation protected long after the engagement ends.
           </motion.p>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <SectionWrapper className="pb-24">
+      {/* Services Grid with Stat Badges */}
+      <SectionWrapper className="pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {services.map((service) => (
-              <ServiceCard
-                key={service.id}
-                icon={service.icon}
-                title={service.title}
-                description={service.description}
-                features={service.features}
-                showDetails={true}
-              />
+              <div key={service.id} className="flex flex-col gap-0">
+                <ServiceCard
+                  icon={service.icon}
+                  title={service.title}
+                  description={service.description}
+                  features={service.features}
+                  showDetails={true}
+                />
+                {service.stat && (
+                  <div className="bg-accent/5 border border-accent/20 border-t-0 rounded-b-xl px-5 py-4 flex items-start gap-3">
+                    <span className="font-syne font-extrabold text-accent text-lg shrink-0 leading-tight">{service.stat.value}</span>
+                    <p className="text-slate-500 text-xs leading-relaxed">{service.stat.label}</p>
+                  </div>
+                )}
+              </div>
             ))}
           </div>
         </div>
       </SectionWrapper>
 
+      {/* Methodology Section — Sophos-style */}
+      <SectionWrapper className="py-20 bg-white/[0.015] border-y border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">
+              How We Work
+            </p>
+            <h2 className="font-syne font-bold text-3xl sm:text-4xl text-white">
+              A Goal-Based Methodology, Not a Checkbox Exercise
+            </h2>
+            <p className="mt-4 text-slate-400 max-w-2xl mx-auto text-base">
+              Every engagement is structured around your specific objectives — not a generic template. We test your systems in the full context of your business environment to deliver outcomes that actually matter.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {methodology.map(({ step, title, description }) => (
+              <div key={step} className="group relative bg-white/[0.03] border border-white/10 rounded-xl p-6 card-hover">
+                <div className="font-syne font-extrabold text-5xl text-accent/15 mb-4 leading-none select-none group-hover:text-accent/25 transition-colors">
+                  {step}
+                </div>
+                <h3 className="font-syne font-bold text-white text-base mb-3 group-hover:text-accent transition-colors">{title}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">{description}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 bg-white/[0.03] border border-white/10 rounded-xl p-6">
+            <h3 className="font-syne font-semibold text-white text-sm mb-4">What's included in every engagement</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {[
+                'Upfront goal-setting and scoping session',
+                'Tailored objectives for your environment',
+                'Detailed findings with remediation recommendations',
+                'Free retest of critical and high-severity items within 90 days',
+                'Executive summary for board or leadership',
+                'Post-engagement debrief with your technical team',
+              ].map((item) => (
+                <div key={item} className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                  <span className="text-slate-400 text-sm">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </SectionWrapper>
+
       {/* Bottom CTA */}
-      <SectionWrapper className="pb-20">
+      <SectionWrapper className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             className="rounded-2xl p-10 text-center"
             style={{
-              background:
-                'linear-gradient(135deg, rgba(0,229,255,0.08) 0%, rgba(0,128,255,0.05) 100%)',
+              background: 'linear-gradient(135deg, rgba(0,229,255,0.08) 0%, rgba(0,128,255,0.05) 100%)',
               border: '1px solid rgba(0,229,255,0.2)',
             }}
           >
             <h2 className="font-syne font-bold text-2xl sm:text-3xl text-white mb-4">
-              Not sure which service you need?
+              Not Sure Which Service You Need?
             </h2>
             <p className="text-slate-400 text-base max-w-xl mx-auto mb-8">
-              Our security consultants will assess your environment and recommend the right mix of services for your threat landscape and budget.
+              Most organisations don't know their biggest security gap until they look. Our consultants will assess your environment and tell you exactly where to focus — free, with no obligation.
             </p>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 bg-accent text-primary font-syne font-bold px-8 py-4 rounded-lg hover:bg-accent/90 transition-all duration-200 hover:shadow-lg hover:shadow-accent/25"
             >
-              Talk to an Expert
+              Talk to a Security Expert
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
