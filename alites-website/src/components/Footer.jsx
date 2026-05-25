@@ -3,34 +3,34 @@ import { Link } from 'react-router-dom';
 import { Linkedin, Twitter, Youtube, Shield, MapPin, Phone, Mail, ChevronRight } from 'lucide-react';
 
 const quickLinks = [
-  { label: 'Home', to: '/' },
-  { label: 'About Us', to: '/about' },
-  { label: 'Our Team', to: '/team' },
+  { label: 'Home',         to: '/' },
+  { label: 'About Us',     to: '/about' },
+  { label: 'Our Team',     to: '/team' },
   { label: 'Case Studies', to: '/case-studies' },
-  { label: 'Contact', to: '/contact' },
+  { label: 'Contact',      to: '/contact' },
 ];
 
 const serviceLinks = [
   { label: 'Penetration Testing', to: '/services' },
-  { label: 'VAPT', to: '/services' },
-  { label: 'SOC as a Service', to: '/services' },
-  { label: 'Cloud Security', to: '/services' },
-  { label: 'Incident Response', to: '/services' },
+  { label: 'VAPT',                to: '/services' },
+  { label: 'SOC as a Service',    to: '/services' },
+  { label: 'Cloud Security',      to: '/services' },
+  { label: 'Incident Response',   to: '/services' },
   { label: 'Compliance Advisory', to: '/services' },
 ];
 
 const socials = [
   { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Youtube, href: '#', label: 'YouTube' },
+  { icon: Twitter,  href: '#', label: 'Twitter' },
+  { icon: Youtube,  href: '#', label: 'YouTube' },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-primary border-t border-accent/20">
+    <footer className="bg-[#0a1628] border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Column 1: Logo + Tagline + Socials */}
+          {/* Logo + tagline */}
           <div className="space-y-5">
             <Link to="/" className="flex items-center gap-2 group">
               <div className="w-8 h-8 rounded bg-accent/10 border border-accent/30 flex items-center justify-center">
@@ -57,18 +57,13 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
+          {/* Quick Links */}
           <div>
-            <h3 className="font-syne font-semibold text-white text-sm uppercase tracking-wider mb-5">
-              Quick Links
-            </h3>
+            <h3 className="font-syne font-semibold text-white text-sm uppercase tracking-wider mb-5">Quick Links</h3>
             <ul className="space-y-2.5">
               {quickLinks.map(({ label, to }) => (
                 <li key={label}>
-                  <Link
-                    to={to}
-                    className="flex items-center gap-1.5 text-slate-400 hover:text-accent text-sm transition-colors duration-200 group"
-                  >
+                  <Link to={to} className="flex items-center gap-1.5 text-slate-400 hover:text-accent text-sm transition-colors duration-200 group">
                     <ChevronRight className="w-3 h-3 text-accent/50 group-hover:text-accent transition-colors" />
                     {label}
                   </Link>
@@ -77,18 +72,13 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Services */}
+          {/* Services */}
           <div>
-            <h3 className="font-syne font-semibold text-white text-sm uppercase tracking-wider mb-5">
-              Services
-            </h3>
+            <h3 className="font-syne font-semibold text-white text-sm uppercase tracking-wider mb-5">Services</h3>
             <ul className="space-y-2.5">
               {serviceLinks.map(({ label, to }) => (
                 <li key={label}>
-                  <Link
-                    to={to}
-                    className="flex items-center gap-1.5 text-slate-400 hover:text-accent text-sm transition-colors duration-200 group"
-                  >
+                  <Link to={to} className="flex items-center gap-1.5 text-slate-400 hover:text-accent text-sm transition-colors duration-200 group">
                     <ChevronRight className="w-3 h-3 text-accent/50 group-hover:text-accent transition-colors" />
                     {label}
                   </Link>
@@ -97,57 +87,38 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Contact Info */}
+          {/* Contact */}
           <div>
-            <h3 className="font-syne font-semibold text-white text-sm uppercase tracking-wider mb-5">
-              Contact Us
-            </h3>
+            <h3 className="font-syne font-semibold text-white text-sm uppercase tracking-wider mb-5">Contact Us</h3>
             <ul className="space-y-4">
               <li className="flex gap-3">
                 <MapPin className="w-4 h-4 text-accent shrink-0 mt-0.5" />
                 <span className="text-slate-400 text-sm leading-relaxed">
-                  No. 12, Tech Park,<br />
-                  Coimbatore – 641014,<br />
-                  Tamil Nadu, India
+                  No. 12, Tech Park,<br />Coimbatore – 641014,<br />Tamil Nadu, India
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-accent shrink-0" />
-                <a
-                  href="tel:+919876543210"
-                  className="text-slate-400 hover:text-accent text-sm transition-colors"
-                >
-                  +91 98765 43210
-                </a>
+                <a href="tel:+919876543210" className="text-slate-400 hover:text-accent text-sm transition-colors">+91 98765 43210</a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-accent shrink-0" />
-                <a
-                  href="mailto:contact@alites.in"
-                  className="text-slate-400 hover:text-accent text-sm transition-colors"
-                >
-                  contact@alites.in
-                </a>
+                <a href="mailto:contact@alites.in" className="text-slate-400 hover:text-accent text-sm transition-colors">contact@alites.in</a>
               </li>
             </ul>
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
       <div className="border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-slate-500 text-xs">
             &copy; {new Date().getFullYear()} Alites Cybersecurity Solutions Pvt. Ltd. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
-            <a href="#" className="text-slate-500 hover:text-accent text-xs transition-colors">
-              Privacy Policy
-            </a>
+            <a href="#" className="text-slate-500 hover:text-accent text-xs transition-colors">Privacy Policy</a>
             <span className="text-slate-700">|</span>
-            <a href="#" className="text-slate-500 hover:text-accent text-xs transition-colors">
-              Terms of Service
-            </a>
+            <a href="#" className="text-slate-500 hover:text-accent text-xs transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>

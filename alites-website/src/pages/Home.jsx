@@ -1,983 +1,278 @@
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-// import { motion, useReducedMotion } from 'framer-motion';
-// import {
-//   ArrowRight,
-//   Users,
-//   Clock,
-//   Globe,
-//   Layers,
-//   Zap,
-//   DollarSign,
-//   BadgeCheck,
-// } from 'lucide-react';
-
-// const PARTICLES = [
-//   { id: 0, left: '12%', top: '22%', size: 2, dur: 5.2, delay: 0 },
-//   { id: 1, left: '78%', top: '15%', size: 3, dur: 6.8, delay: 1.1 },
-//   { id: 2, left: '55%', top: '68%', size: 2, dur: 4.5, delay: 0.6 },
-//   { id: 3, left: '88%', top: '52%', size: 1.5, dur: 7.1, delay: 2.0 },
-//   { id: 4, left: '32%', top: '80%', size: 2.5, dur: 5.9, delay: 0.3 },
-//   { id: 5, left: '65%', top: '35%', size: 1.5, dur: 6.3, delay: 1.5 },
-//   { id: 6, left: '8%', top: '60%', size: 2, dur: 4.9, delay: 0.9 },
-//   { id: 7, left: '45%', top: '10%', size: 1, dur: 8.0, delay: 2.4 },
-//   { id: 8, left: '90%', top: '80%', size: 2, dur: 5.5, delay: 0.4 },
-//   { id: 9, left: '20%', top: '45%', size: 1.5, dur: 6.7, delay: 1.8 },
-// ];
-// import SectionWrapper from '../components/SectionWrapper';
-// import StatBar from '../components/StatBar';
-// import ServiceCard from '../components/ServiceCard';
-// import { services } from '../data/services';
-// import { industries } from '../data/industries';
-// import { testimonials } from '../data/testimonials';
-
-// const whyFeatures = [
-//   {
-//     num: '01',
-//     icon: Users,
-//     title: 'Expert Team',
-//     description:
-//       'Our team of 50+ certified security professionals brings decades of combined experience across every domain of cybersecurity.',
-//   },
-//   {
-//     num: '02',
-//     icon: Clock,
-//     title: '24/7 Monitoring',
-//     description:
-//       'Round-the-clock SOC operations ensure threats are detected and neutralized before they can impact your business.',
-//   },
-//   {
-//     num: '03',
-//     icon: Globe,
-//     title: 'Global Compliance',
-//     description:
-//       'We align all our services with international standards including ISO 27001, PCI DSS, HIPAA, GDPR, and SOC 2.',
-//   },
-//   {
-//     num: '04',
-//     icon: Layers,
-//     title: 'Scalable Solutions',
-//     description:
-//       'From SMEs to large enterprises, our security solutions scale with your growth without compromising coverage.',
-//   },
-//   {
-//     num: '05',
-//     icon: Zap,
-//     title: 'Rapid Response',
-//     description:
-//       'Our incident response team deploys within hours of an alert, minimizing damage and reducing recovery time.',
-//   },
-//   {
-//     num: '06',
-//     icon: DollarSign,
-//     title: 'Cost Effective',
-//     description:
-//       'Enterprise security at competitive pricing — we make world-class protection accessible without hidden costs.',
-//   },
-// ];
-
-// const certifications = [
-//   'ISO 27001',
-//   'ISO 9001',
-//   'CEH',
-//   'OSCP',
-//   'CISSP',
-//   'PCI DSS QSA',
-// ];
-
-// export default function Home() {
-//   const reduced = useReducedMotion();
-
-//   const wordVariants = {
-//     hidden: reduced ? { opacity: 0 } : { opacity: 0, y: 28, skewX: -4 },
-//     visible: (i) => ({
-//       opacity: 1,
-//       y: 0,
-//       skewX: 0,
-//       transition: { duration: reduced ? 0.15 : 0.55, delay: reduced ? 0 : 0.1 + i * 0.16, ease: 'easeOut' },
-//     }),
-//   };
-
-//   return (
-//     <div className="overflow-x-hidden">
-//       {/* 1. HERO */}
-//       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-//         {/* Grid background */}
-//         <div className="absolute inset-0 grid-bg opacity-60" />
-
-//         {/* Floating particles */}
-//         {!reduced && PARTICLES.map((p) => (
-//           <motion.div
-//             key={p.id}
-//             className="absolute rounded-full bg-accent/40 pointer-events-none"
-//             style={{ left: p.left, top: p.top, width: p.size, height: p.size }}
-//             animate={{ y: [0, -18, 0], opacity: [0.3, 0.8, 0.3] }}
-//             transition={{ duration: p.dur, repeat: Infinity, ease: 'easeInOut', delay: p.delay }}
-//           />
-//         ))}
-
-//         {/* Cyan glow orb */}
-//         <motion.div
-//           className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
-//           style={{
-//             background:
-//               'radial-gradient(circle, rgba(0,229,255,0.08) 0%, rgba(0,229,255,0.03) 40%, transparent 70%)',
-//           }}
-//           animate={reduced ? {} : { scale: [1, 1.1, 1], opacity: [0.6, 1, 0.6] }}
-//           transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-//         />
-
-//         {/* Second glow */}
-//         <motion.div
-//           className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full"
-//           style={{
-//             background:
-//               'radial-gradient(circle, rgba(0,128,255,0.06) 0%, transparent 70%)',
-//           }}
-//           animate={reduced ? {} : { scale: [1, 1.2, 1] }}
-//           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-//         />
-
-//         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-//           {/* Badge */}
-//           <motion.div
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.5 }}
-//             className="inline-flex items-center gap-2 border border-accent/30 bg-accent/5 rounded-full px-4 py-1.5 text-accent text-xs font-medium mb-8"
-//           >
-//             <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-//             Trusted by 500+ Organizations Worldwide
-//           </motion.div>
-
-//           {/* Main headline — word-by-word stagger */}
-//           <h1 className="font-syne font-extrabold text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white leading-none tracking-tight">
-//             {['Defend.', 'Detect.', 'Respond.'].map((word, i) => (
-//               <motion.span
-//                 key={word}
-//                 custom={i}
-//                 variants={wordVariants}
-//                 initial="hidden"
-//                 animate="visible"
-//                 className={`inline-block mr-[0.25em] ${i === 1 ? 'text-gradient' : ''}`}
-//               >
-//                 {word}
-//                 {i === 1 && <br />}
-//               </motion.span>
-//             ))}
-//           </h1>
-
-//           {/* Tagline */}
-//           <motion.p
-//             initial={{ opacity: 0, y: 30 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.6, delay: 0.2 }}
-//             className="mt-6 text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed"
-//           >
-//             Your Shield in the Digital World. Alites delivers enterprise-grade cybersecurity — penetration testing, 24/7 SOC, cloud security, and compliance — to protect what matters most.
-//           </motion.p>
-
-//           {/* CTA Buttons */}
-//           <motion.div
-//             initial={{ opacity: 0, y: 30 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.6, delay: 0.3 }}
-//             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
-//           >
-//             <Link
-//               to="/services"
-//               className="inline-flex items-center gap-2 bg-accent text-primary font-syne font-bold px-8 py-4 rounded-lg hover:bg-accent/90 transition-all duration-200 hover:shadow-lg hover:shadow-accent/25 text-base"
-//             >
-//               Explore Services
-//               <ArrowRight className="w-5 h-5" />
-//             </Link>
-//             <Link
-//               to="/contact"
-//               className="inline-flex items-center gap-2 border border-white/20 text-white font-syne font-semibold px-8 py-4 rounded-lg hover:border-accent/50 hover:text-accent hover:bg-accent/5 transition-all duration-200 text-base"
-//             >
-//               Contact Us
-//             </Link>
-//           </motion.div>
-
-//           {/* Trust strip */}
-//           <motion.div
-//             initial={{ opacity: 0 }}
-//             animate={{ opacity: 1 }}
-//             transition={{ duration: 0.8, delay: 0.5 }}
-//             className="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
-//           >
-//             {['ISO 27001 Certified', 'OSCP Experts', 'PCI DSS QSA', '24/7 SOC'].map((badge) => (
-//               <div key={badge} className="flex items-center gap-2 text-slate-500 text-sm">
-//                 <BadgeCheck className="w-4 h-4 text-accent/60" />
-//                 {badge}
-//               </div>
-//             ))}
-//           </motion.div>
-//         </div>
-
-//         {/* Scroll indicator */}
-//         <motion.div
-//           className="absolute bottom-8 left-1/2 -translate-x-1/2"
-//           animate={{ y: [0, 8, 0] }}
-//           transition={{ duration: 2, repeat: Infinity }}
-//         >
-//           <div className="w-px h-12 bg-gradient-to-b from-accent/50 to-transparent mx-auto" />
-//         </motion.div>
-//       </section>
-
-//       {/* 2. STATS BAR */}
-//       <SectionWrapper className="py-16 bg-white/[0.02] border-y border-white/5">
-//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//           <StatBar />
-//         </div>
-//       </SectionWrapper>
-
-//       {/* 3. SERVICES GRID */}
-//       <SectionWrapper id="services" className="py-20">
-//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//           <div className="text-center mb-12">
-//             <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">
-//               What We Do
-//             </p>
-//             <h2 className="font-syne font-bold text-3xl sm:text-4xl text-white">
-//               Our Security Services
-//             </h2>
-//             <p className="mt-4 text-slate-400 max-w-2xl mx-auto text-base leading-relaxed">
-//               Comprehensive cybersecurity services designed to protect your business at every layer — from code to cloud.
-//             </p>
-//           </div>
-//           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-//             {services.map((service) => (
-//               <ServiceCard
-//                 key={service.id}
-//                 icon={service.icon}
-//                 title={service.title}
-//                 description={service.description}
-//                 features={service.features}
-//                 showDetails={false}
-//               />
-//             ))}
-//           </div>
-//           <div className="text-center mt-10">
-//             <Link
-//               to="/services"
-//               className="inline-flex items-center gap-2 border border-accent/40 text-accent font-syne font-semibold px-6 py-3 rounded-lg hover:bg-accent/10 transition-all duration-200"
-//             >
-//               View All Services
-//               <ArrowRight className="w-4 h-4" />
-//             </Link>
-//           </div>
-//         </div>
-//       </SectionWrapper>
-
-//       {/* 4. WHY ALITES */}
-//       <SectionWrapper id="why-alites" className="py-20 bg-white/[0.015]">
-//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//           <div className="text-center mb-12">
-//             <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">
-//               Why Choose Us
-//             </p>
-//             <h2 className="font-syne font-bold text-3xl sm:text-4xl text-white">
-//               The Alites Advantage
-//             </h2>
-//             <p className="mt-4 text-slate-400 max-w-2xl mx-auto text-base leading-relaxed">
-//               Six reasons thousands of organizations trust Alites to protect their most critical assets.
-//             </p>
-//           </div>
-//           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-//             {whyFeatures.map(({ num, icon: Icon, title, description }) => (
-//               <div
-//                 key={num}
-//                 className="group relative bg-white/[0.03] border border-white/10 rounded-xl p-6 card-hover"
-//               >
-//                 <div className="absolute top-4 right-4 font-syne font-extrabold text-4xl text-accent/10 group-hover:text-accent/20 transition-colors select-none">
-//                   {num}
-//                 </div>
-//                 <div className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-//                   <Icon className="w-5 h-5 text-accent" />
-//                 </div>
-//                 <h3 className="font-syne font-bold text-white text-base mb-2 group-hover:text-accent transition-colors">
-//                   {title}
-//                 </h3>
-//                 <p className="text-slate-400 text-sm leading-relaxed">{description}</p>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </SectionWrapper>
-
-//       {/* 5. INDUSTRIES */}
-//       <SectionWrapper id="industries" className="py-20">
-//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//           <div className="text-center mb-12">
-//             <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">
-//               Sectors We Protect
-//             </p>
-//             <h2 className="font-syne font-bold text-3xl sm:text-4xl text-white">
-//               Industries We Serve
-//             </h2>
-//             <p className="mt-4 text-slate-400 max-w-2xl mx-auto text-base leading-relaxed">
-//               Deep domain expertise across eight critical sectors means our security solutions fit your industry's unique challenges.
-//             </p>
-//           </div>
-//           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-4">
-//             {industries.map((industry) => (
-//               <div
-//                 key={industry.id}
-//                 className="group bg-white/[0.03] border border-white/10 rounded-xl p-5 card-hover flex flex-col items-center text-center gap-3"
-//               >
-//                 <div className="text-4xl">{industry.icon}</div>
-//                 <h3 className="font-syne font-semibold text-white text-sm group-hover:text-accent transition-colors">
-//                   {industry.name}
-//                 </h3>
-//               </div>
-//             ))}
-//           </div>
-//           <div className="text-center mt-10">
-//             <Link
-//               to="/industries"
-//               className="inline-flex items-center gap-2 border border-accent/40 text-accent font-syne font-semibold px-6 py-3 rounded-lg hover:bg-accent/10 transition-all duration-200"
-//             >
-//               View All Industries
-//               <ArrowRight className="w-4 h-4" />
-//             </Link>
-//           </div>
-//         </div>
-//       </SectionWrapper>
-
-//       {/* 6. CERTIFICATIONS */}
-//       <SectionWrapper id="certifications" className="py-16 bg-white/[0.015] border-y border-white/5">
-//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//           <div className="text-center mb-10">
-//             <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">
-//               Accreditations
-//             </p>
-//             <h2 className="font-syne font-bold text-2xl sm:text-3xl text-white">
-//               Certifications & Standards
-//             </h2>
-//           </div>
-//           <div className="flex flex-wrap justify-center gap-4">
-//             {certifications.map((cert) => (
-//               <div
-//                 key={cert}
-//                 className="group flex items-center gap-2 border border-accent/30 bg-accent/5 rounded-full px-6 py-3 hover:border-accent/60 hover:bg-accent/10 transition-all duration-200 cursor-default"
-//               >
-//                 <BadgeCheck className="w-4 h-4 text-accent" />
-//                 <span className="font-syne font-semibold text-white text-sm">{cert}</span>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </SectionWrapper>
-
-//       {/* 7. TESTIMONIALS */}
-//       <SectionWrapper id="testimonials" className="py-20">
-//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//           <div className="text-center mb-12">
-//             <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">
-//               Client Stories
-//             </p>
-//             <h2 className="font-syne font-bold text-3xl sm:text-4xl text-white">
-//               What Our Clients Say
-//             </h2>
-//           </div>
-//           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-//             {testimonials.map((t) => (
-//               <div
-//                 key={t.id}
-//                 className="group bg-white/[0.03] border border-white/10 rounded-xl p-6 card-hover flex flex-col gap-5"
-//               >
-//                 {/* Quote mark */}
-//                 <div className="font-syne text-5xl text-accent/20 leading-none select-none">"</div>
-//                 <p className="text-slate-300 text-sm leading-relaxed flex-1 -mt-4">
-//                   {t.quote}
-//                 </p>
-//                 <div className="flex items-center gap-3 pt-4 border-t border-white/5">
-//                   <div className="w-10 h-10 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-xl">
-//                     {t.avatar}
-//                   </div>
-//                   <div>
-//                     <div className="font-syne font-semibold text-white text-sm">{t.name}</div>
-//                     <div className="text-slate-500 text-xs">
-//                       {t.role}, {t.company}
-//                     </div>
-//                   </div>
-//                 </div>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </SectionWrapper>
-
-//       {/* 8. CTA BANNER */}
-//       <SectionWrapper id="cta" className="py-20">
-//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//           <div
-//             className="relative rounded-2xl overflow-hidden p-10 sm:p-16 text-center"
-//             style={{
-//               background:
-//                 'linear-gradient(135deg, rgba(0,229,255,0.12) 0%, rgba(0,128,255,0.08) 50%, rgba(0,229,255,0.05) 100%)',
-//               border: '1px solid rgba(0,229,255,0.25)',
-//             }}
-//           >
-//             {/* Background glow */}
-//             <div
-//               className="absolute inset-0 pointer-events-none"
-//               style={{
-//                 background:
-//                   'radial-gradient(ellipse at center, rgba(0,229,255,0.08) 0%, transparent 70%)',
-//               }}
-//             />
-//             <div className="relative z-10">
-//               <h2 className="font-syne font-extrabold text-3xl sm:text-4xl md:text-5xl text-white mb-4">
-//                 Ready to Secure Your Business?
-//               </h2>
-//               <p className="text-slate-300 text-base sm:text-lg max-w-xl mx-auto mb-8 leading-relaxed">
-//                 Get a complimentary security assessment from our experts. No commitment required — just actionable insights to improve your security posture.
-//               </p>
-//               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-//                 <Link
-//                   to="/contact"
-//                   className="inline-flex items-center gap-2 bg-accent text-primary font-syne font-bold px-8 py-4 rounded-lg hover:bg-accent/90 transition-all duration-200 hover:shadow-lg hover:shadow-accent/30 text-base"
-//                 >
-//                   Get Free Assessment
-//                   <ArrowRight className="w-5 h-5" />
-//                 </Link>
-//                 <Link
-//                   to="/services"
-//                   className="inline-flex items-center gap-2 border border-white/30 text-white font-syne font-semibold px-8 py-4 rounded-lg hover:border-accent/50 hover:text-accent transition-all duration-200 text-base"
-//                 >
-//                   View Services
-//                 </Link>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </SectionWrapper>
-//     </div>
-//   );
-// }
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useReducedMotion } from 'framer-motion';
 import {
-  ArrowRight,
-  Users,
-  Clock,
-  Globe,
-  Layers,
-  Zap,
-  DollarSign,
-  BadgeCheck,
-  ShieldOff,
-  TrendingUp,
+  motion,
+  useScroll,
+  useTransform,
+} from 'framer-motion';
+import {
+  ArrowRight, Shield, CheckCircle2, Star,
+  Target, ShieldAlert, MonitorDot, Cloud, Siren, FileCheck,
+  Zap, Eye, Award, HeartHandshake, BarChart3,
 } from 'lucide-react';
-
-const PARTICLES = [
-  { id: 0, left: '12%', top: '22%', size: 2, dur: 5.2, delay: 0 },
-  { id: 1, left: '78%', top: '15%', size: 3, dur: 6.8, delay: 1.1 },
-  { id: 2, left: '55%', top: '68%', size: 2, dur: 4.5, delay: 0.6 },
-  { id: 3, left: '88%', top: '52%', size: 1.5, dur: 7.1, delay: 2.0 },
-  { id: 4, left: '32%', top: '80%', size: 2.5, dur: 5.9, delay: 0.3 },
-  { id: 5, left: '65%', top: '35%', size: 1.5, dur: 6.3, delay: 1.5 },
-  { id: 6, left: '8%', top: '60%', size: 2, dur: 4.9, delay: 0.9 },
-  { id: 7, left: '45%', top: '10%', size: 1, dur: 8.0, delay: 2.4 },
-  { id: 8, left: '90%', top: '80%', size: 2, dur: 5.5, delay: 0.4 },
-  { id: 9, left: '20%', top: '45%', size: 1.5, dur: 6.7, delay: 1.8 },
-];
-
-import SectionWrapper from '../components/SectionWrapper';
-import StatBar from '../components/StatBar';
-import ServiceCard from '../components/ServiceCard';
+import PageStack from '../components/PageStack';
+import HeroGlobeSection from '../components/HeroGlobeSection';
+import { useIsMobile } from '../hooks/useIsMobile';
 import { services } from '../data/services';
 import { industries } from '../data/industries';
 import { testimonials } from '../data/testimonials';
 
-const threatStats = [
-  {
-    value: '₹17.6 Cr',
-    label: 'Average cost of a data breach in India in 2024 — the highest ever recorded.',
-    source: 'IBM Cost of a Data Breach Report 2024',
-    icon: DollarSign,
-  },
-  {
-    value: '197 days',
-    label: 'How long it takes the average organisation to detect a breach without 24/7 monitoring.',
-    source: 'IBM Security Report 2024',
-    icon: Clock,
-  },
-  {
-    value: '32%',
-    label: 'Of ransomware victims were breached through unpatched vulnerabilities — the #1 root cause.',
-    source: 'Sophos State of Ransomware 2024',
-    icon: ShieldOff,
-  },
-  {
-    value: '3×',
-    label: 'Increase in cyberattacks on Indian organisations reported by CERT-In in 2023.',
-    source: 'CERT-In Annual Report 2023',
-    icon: TrendingUp,
-  },
-];
+/* ─── Horizontal Services Scroll ────────────────────────── */
+const serviceIconMap = { Target, ShieldAlert, MonitorDot, Cloud, Siren, FileCheck };
 
-const whyFeatures = [
-  {
-    num: '01',
-    icon: Users,
-    title: 'Certified Expert Team',
-    description:
-      '50+ certified security professionals holding OSCP, CISSP, CISA, CEH, and cloud security credentials. Our team has disclosed vulnerabilities in platforms used by hundreds of millions of people.',
-  },
-  {
-    num: '02',
-    icon: Clock,
-    title: '24/7 SOC Monitoring',
-    description:
-      'Round-the-clock threat detection with a mean time to detect under 15 minutes — 13× faster than the industry average of 197 days. Threats are neutralised before they become breaches.',
-  },
-  {
-    num: '03',
-    icon: Globe,
-    title: 'Global Compliance Ready',
-    description:
-      'Every engagement is aligned with ISO 27001, PCI DSS, HIPAA, GDPR, SOC 2, and India\'s CERT-In and DPDP Act requirements. We don\'t just find problems — we help you meet your audit obligations.',
-  },
-  {
-    num: '04',
-    icon: Layers,
-    title: 'Scalable for Any Size',
-    description:
-      'From 10-person startups to 10,000-seat enterprises, our security programs scale to your environment, budget, and risk appetite — without ever compromising on the quality of protection.',
-  },
-  {
-    num: '05',
-    icon: Zap,
-    title: 'Rapid Incident Response',
-    description:
-      'Our IR team deploys within hours of an alert — on-site or remote. Our clients recover in an average of 36 hours versus the global average of 23 days. Speed is survival.',
-  },
-  {
-    num: '06',
-    icon: DollarSign,
-    title: 'Transparent Pricing',
-    description:
-      'Enterprise-grade protection with honest, predictable pricing and no hidden fees. We\'ll tell you exactly what you need, what it costs, and what you\'ll get — before you sign anything.',
-  },
-];
-
-const certifications = [
-  'ISO 27001',
-  'ISO 9001',
-  'CEH',
-  'OSCP',
-  'CISSP',
-  'PCI DSS QSA',
-];
-
-export default function Home() {
-  const reduced = useReducedMotion();
-
-  const wordVariants = {
-    hidden: reduced ? { opacity: 0 } : { opacity: 0, y: 28, skewX: -4 },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      skewX: 0,
-      transition: { duration: reduced ? 0.15 : 0.55, delay: reduced ? 0 : 0.1 + i * 0.16, ease: 'easeOut' },
-    }),
-  };
+function ProgressDots({ scrollYProgress, count }) {
+  const [active, setActive] = useState(0);
+  useEffect(() => {
+    const unsub = scrollYProgress.on('change', v => setActive(Math.round(v * (count - 1))));
+    return unsub;
+  }, [scrollYProgress, count]);
 
   return (
-    <div className="overflow-x-hidden">
-      {/* 1. HERO */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-        <div className="absolute inset-0 grid-bg opacity-60" />
-        {!reduced && PARTICLES.map((p) => (
-          <motion.div
-            key={p.id}
-            className="absolute rounded-full bg-accent/40 pointer-events-none"
-            style={{ left: p.left, top: p.top, width: p.size, height: p.size }}
-            animate={{ y: [0, -18, 0], opacity: [0.3, 0.8, 0.3] }}
-            transition={{ duration: p.dur, repeat: Infinity, ease: 'easeInOut', delay: p.delay }}
-          />
-        ))}
-        <motion.div
-          className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(0,229,255,0.08) 0%, rgba(0,229,255,0.03) 40%, transparent 70%)' }}
-          animate={reduced ? {} : { scale: [1, 1.1, 1], opacity: [0.6, 1, 0.6] }}
-          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div
-          className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(0,128,255,0.06) 0%, transparent 70%)' }}
-          animate={reduced ? {} : { scale: [1, 1.2, 1] }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-        />
+    <div className="flex items-center gap-2 justify-center pb-8 shrink-0">
+      {Array.from({ length: count }, (_, i) => (
+        <div key={i} className={`h-1.5 rounded-full transition-all duration-300 ${i === active ? 'w-6 bg-accent' : 'w-1.5 bg-slate-300'}`} />
+      ))}
+    </div>
+  );
+}
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 border border-accent/30 bg-accent/5 rounded-full px-4 py-1.5 text-accent text-xs font-medium mb-8"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-            Trusted by 500+ Organisations Across India &amp; Beyond
-          </motion.div>
-
-          <h1 className="font-syne font-extrabold text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white leading-none tracking-tight">
-            {['Defend.', 'Detect.', 'Respond.'].map((word, i) => (
-              <motion.span
-                key={word}
-                custom={i}
-                variants={wordVariants}
-                initial="hidden"
-                animate="visible"
-                className={`inline-block mr-[0.25em] ${i === 1 ? 'text-gradient' : ''}`}
-              >
-                {word}
-                {i === 1 && <br />}
-              </motion.span>
-            ))}
-          </h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-6 text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed"
-          >
-            India's cyber threat landscape has never been more dangerous. Alites delivers the penetration testing, 24/7 SOC monitoring, incident response, and compliance expertise your organisation needs to stay one step ahead — not one breach behind.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 bg-accent text-primary font-syne font-bold px-8 py-4 rounded-lg hover:bg-accent/90 transition-all duration-200 hover:shadow-lg hover:shadow-accent/25 text-base"
-            >
-              Get a Free Security Assessment
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link
-              to="/services"
-              className="inline-flex items-center gap-2 border border-white/20 text-white font-syne font-semibold px-8 py-4 rounded-lg hover:border-accent/50 hover:text-accent hover:bg-accent/5 transition-all duration-200 text-base"
-            >
-              Explore Services
-            </Link>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
-          >
-            {['ISO 27001 Certified', 'OSCP-Certified Red Team', 'PCI DSS QSA', '24/7 SOC', 'CERT-In Empanelled'].map((badge) => (
-              <div key={badge} className="flex items-center gap-2 text-slate-500 text-sm">
-                <BadgeCheck className="w-4 h-4 text-accent/60" />
-                {badge}
-              </div>
-            ))}
-          </motion.div>
-        </div>
-
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <div className="w-px h-12 bg-gradient-to-b from-accent/50 to-transparent mx-auto" />
-        </motion.div>
-      </section>
-
-      {/* 2. STATS BAR */}
-      <SectionWrapper className="py-16 bg-white/[0.02] border-y border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <StatBar />
-        </div>
-      </SectionWrapper>
-
-      {/* 3. WHY YOU NEED SECURITY — Sophos-style threat proof points */}
-      <SectionWrapper id="threat-landscape" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-4">
-            <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">
-              The Threat Reality
-            </p>
-            <h2 className="font-syne font-bold text-3xl sm:text-4xl text-white">
-              The question isn't <em className="text-gradient not-italic">if</em> you'll be attacked.
-            </h2>
-            <p className="mt-4 text-slate-400 max-w-2xl mx-auto text-base leading-relaxed">
-              It's whether you'll know about it in time. These aren't hypothetical risks — they're the realities facing Indian organisations right now.
-            </p>
+function HorizServiceCard({ service }) {
+  const Icon = serviceIconMap[service.icon] || Shield;
+  return (
+    <div className="h-full bg-white/5 border border-white/10 rounded-2xl overflow-hidden shadow-sm flex flex-col md:flex-row">
+      <div className="h-1 w-full md:w-1 md:h-full bg-gradient-to-r md:bg-gradient-to-b from-accent/60 via-accent to-accent/20 shrink-0" />
+      <div className="flex flex-col md:flex-row flex-1 p-7 sm:p-10 gap-8">
+        <div className="md:w-1/2 flex flex-col justify-center">
+          <div className="w-14 h-14 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-5">
+            <Icon className="w-7 h-7 text-accent" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
-            {threatStats.map((stat) => {
-              const Icon = stat.icon;
-              return (
-                <div
-                  key={stat.value}
-                  className="group bg-white/[0.03] border border-white/10 rounded-xl p-6 card-hover flex flex-col gap-4"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
-                    <Icon className="w-5 h-5 text-accent" />
-                  </div>
-                  <div className="font-syne font-extrabold text-3xl text-accent leading-none">
-                    {stat.value}
-                  </div>
-                  <p className="text-slate-300 text-sm leading-relaxed flex-1">{stat.label}</p>
-                  <p className="text-slate-600 text-xs">{stat.source}</p>
-                </div>
-              );
-            })}
+          <h2 className="font-syne font-bold text-2xl sm:text-3xl text-white mb-4 leading-snug">{service.title}</h2>
+          <p className="text-slate-400 text-sm sm:text-base leading-relaxed">{service.description}</p>
+          {service.stat && (
+            <div className="mt-6 bg-accent/5 border border-accent/20 rounded-xl p-4">
+              <span className="font-syne font-extrabold text-2xl text-accent">{service.stat.value}</span>
+              <p className="text-slate-400 text-xs mt-1 leading-relaxed">{service.stat.label}</p>
+            </div>
+          )}
+        </div>
+        <div className="md:w-1/2 flex flex-col justify-between">
+          <div>
+            <h3 className="font-syne font-semibold text-xs uppercase tracking-widest text-slate-500 mb-4">Key Features</h3>
+            <ul className="space-y-3">
+              {service.features.map((feat, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                  <span className="text-slate-300 text-sm">{feat}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-          <div className="text-center mt-10">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 border border-accent/40 text-accent font-syne font-semibold px-6 py-3 rounded-lg hover:bg-accent/10 transition-all duration-200"
-            >
-              Find Out Where You're Exposed
-              <ArrowRight className="w-4 h-4" />
+          <div className="flex flex-col sm:flex-row gap-3 mt-8">
+            <Link to="/contact" className="flex-1 text-center bg-accent text-white font-syne font-bold text-sm px-5 py-3 rounded-lg hover:bg-accent/90 transition-all duration-200 hover:shadow-lg hover:shadow-accent/25">
+              Get a Quote
+            </Link>
+            <Link to="/services" className="flex-1 text-center border border-accent/40 text-accent font-syne font-semibold text-sm px-5 py-3 rounded-lg hover:bg-accent/5 transition-all duration-200">
+              Learn More
             </Link>
           </div>
         </div>
-      </SectionWrapper>
+      </div>
+    </div>
+  );
+}
 
-      {/* 4. SERVICES GRID */}
-      <SectionWrapper id="services" className="py-20 bg-white/[0.015]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">
-              What We Do
-            </p>
-            <h2 className="font-syne font-bold text-3xl sm:text-4xl text-white">
-              Security That Works at Every Layer
-            </h2>
-            <p className="mt-4 text-slate-400 max-w-2xl mx-auto text-base leading-relaxed">
-              From your external attack surface to your internal network, cloud environment, and compliance obligations — we protect the parts attackers target most.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service) => (
-              <ServiceCard
-                key={service.id}
-                icon={service.icon}
-                title={service.title}
-                description={service.description}
-                features={service.features}
-                showDetails={false}
-              />
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link
-              to="/services"
-              className="inline-flex items-center gap-2 border border-accent/40 text-accent font-syne font-semibold px-6 py-3 rounded-lg hover:bg-accent/10 transition-all duration-200"
-            >
-              View All Services
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </SectionWrapper>
+const CARD_VW = 82;
+const GAP_VW  = 3;
+const STEP_VW = CARD_VW + GAP_VW;
+const INIT_PL = (100 - CARD_VW) / 2;
 
-      {/* 5. WHY ALITES */}
-      <SectionWrapper id="why-alites" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">
-              Why Alites
-            </p>
-            <h2 className="font-syne font-bold text-3xl sm:text-4xl text-white">
-              Security You Can Measure. Partners You Can Trust.
-            </h2>
-            <p className="mt-4 text-slate-400 max-w-2xl mx-auto text-base leading-relaxed">
-              We don't just deliver reports. We stand beside you through remediation, retesting, and every incident — because your security is a continuous commitment, not a one-time project.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {whyFeatures.map(({ num, icon: Icon, title, description }) => (
-              <div
-                key={num}
-                className="group relative bg-white/[0.03] border border-white/10 rounded-xl p-6 card-hover"
-              >
-                <div className="absolute top-4 right-4 font-syne font-extrabold text-4xl text-accent/10 group-hover:text-accent/20 transition-colors select-none">
-                  {num}
-                </div>
-                <div className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-                  <Icon className="w-5 h-5 text-accent" />
-                </div>
-                <h3 className="font-syne font-bold text-white text-base mb-2 group-hover:text-accent transition-colors">
-                  {title}
-                </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">{description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </SectionWrapper>
+function HorizontalServicesScroll() {
+  const containerRef = useRef(null);
+  const isMobile = useIsMobile();
+  const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start start', 'end end'] });
+  const endVw = (services.length - 1) * STEP_VW;
+  const x = useTransform(scrollYProgress, [0, 1], [`${INIT_PL}vw`, `${INIT_PL - endVw}vw`]);
 
-      {/* 6. INDUSTRIES */}
-      <SectionWrapper id="industries" className="py-20 bg-white/[0.015]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">
-              Sectors We Protect
-            </p>
-            <h2 className="font-syne font-bold text-3xl sm:text-4xl text-white">
-              We Know Your Industry's Threats
-            </h2>
-            <p className="mt-4 text-slate-400 max-w-2xl mx-auto text-base leading-relaxed">
-              Generic security doesn't protect specific industries. Our domain experts understand the regulations, attack vectors, and operational constraints unique to your sector.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-4">
-            {industries.map((industry) => (
-              <div
-                key={industry.id}
-                className="group bg-white/[0.03] border border-white/10 rounded-xl p-5 card-hover flex flex-col items-center text-center gap-3"
-              >
-                <div className="text-4xl">{industry.icon}</div>
-                <h3 className="font-syne font-semibold text-white text-sm group-hover:text-accent transition-colors">
-                  {industry.name}
-                </h3>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link
-              to="/industries"
-              className="inline-flex items-center gap-2 border border-accent/40 text-accent font-syne font-semibold px-6 py-3 rounded-lg hover:bg-accent/10 transition-all duration-200"
-            >
-              View All Industries
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </SectionWrapper>
-
-      {/* 7. CERTIFICATIONS */}
-      <SectionWrapper id="certifications" className="py-16 bg-white/[0.02] border-y border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  if (isMobile) {
+    return (
+      <div className="py-16 px-4 bg-[#0D0D0D]">
+        <div className="max-w-2xl mx-auto">
           <div className="text-center mb-10">
-            <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">
-              Verified Credentials
-            </p>
-            <h2 className="font-syne font-bold text-2xl sm:text-3xl text-white">
-              Certifications That Back Our Claims
-            </h2>
-            <p className="mt-3 text-slate-500 text-sm">
-              Our accreditations aren't decorations. They're the independent proof that our methods, processes, and people meet global security standards.
-            </p>
+            <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">What We Do</p>
+            <h2 className="font-syne font-bold text-3xl text-white mb-2">Full-Spectrum Cybersecurity</h2>
           </div>
-          <div className="flex flex-wrap justify-center gap-4">
-            {certifications.map((cert) => (
-              <div
-                key={cert}
-                className="group flex items-center gap-2 border border-accent/30 bg-accent/5 rounded-full px-6 py-3 hover:border-accent/60 hover:bg-accent/10 transition-all duration-200 cursor-default"
-              >
-                <BadgeCheck className="w-4 h-4 text-accent" />
-                <span className="font-syne font-semibold text-white text-sm">{cert}</span>
-              </div>
-            ))}
+          <div className="space-y-6">
+            {services.map(svc => <div key={svc.id}><HorizServiceCard service={svc} /></div>)}
           </div>
         </div>
-      </SectionWrapper>
+      </div>
+    );
+  }
 
-      {/* 8. TESTIMONIALS */}
-      <SectionWrapper id="testimonials" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">
-              Client Stories
-            </p>
-            <h2 className="font-syne font-bold text-3xl sm:text-4xl text-white">
-              Results Our Clients Remember
+  return (
+    <div ref={containerRef} style={{ height: `${services.length * 100}vh` }} className="relative bg-[#0D0D0D]">
+      <div className="sticky top-0 h-screen flex flex-col overflow-hidden">
+        <div className="pt-24 pb-6 text-center shrink-0">
+          <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">What We Do</p>
+          <h2 className="font-syne font-bold text-3xl sm:text-4xl text-white mb-2">Full-Spectrum Cybersecurity</h2>
+          <p className="text-slate-500 text-sm">Scroll to explore each service →</p>
+        </div>
+
+        <div className="flex-1 flex items-center overflow-visible min-h-0">
+          <motion.div style={{ x, gap: `${GAP_VW}vw` }} className="flex will-change-transform">
+            {services.map((svc) => (
+              <div key={svc.id} style={{ width: `${CARD_VW}vw`, minWidth: `${CARD_VW}vw`, height: 'clamp(380px, 58vh, 520px)' }}>
+                <HorizServiceCard service={svc} />
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        <ProgressDots scrollYProgress={scrollYProgress} count={services.length} />
+
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-slate-200">
+          <motion.div style={{ scaleX: scrollYProgress, transformOrigin: 'left' }} className="h-full bg-accent" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ─── PANEL 3 — Why Alites + Industries ─────────────────── */
+const whyCards = [
+  { icon: Shield,        title: 'Proven Track Record', desc: '500+ clients secured, 99.9% retention rate, zero data breaches at client sites.' },
+  { icon: Zap,           title: 'Rapid Response',      desc: 'On-site incident response within 3 hours. Crisis teams available 24/7/365.' },
+  { icon: Award,         title: 'Certified Experts',   desc: 'OSCP, CEH, CISM, CISA, and cloud-certified specialists across every domain.' },
+  { icon: Eye,           title: 'Full Transparency',   desc: 'Plain-language reports, no hidden findings, no upsell pressure. Just the truth.' },
+  { icon: HeartHandshake,title: 'Genuine Partnership', desc: 'We work alongside your team — not just for the engagement, but long term.' },
+  { icon: BarChart3,     title: 'Measurable Outcomes', desc: 'Every engagement delivers quantified risk reduction you can show your board.' },
+];
+
+function WhyPanel() {
+  return (
+    <section className="relative h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-[#111111]">
+      <div className="absolute inset-0 grid-bg opacity-60" />
+      <div className="relative z-10 w-full max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+          <div>
+            <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">Why Alites</p>
+            <h2 className="font-syne font-bold text-3xl sm:text-4xl text-white mb-6">
+              Security You Can Trust. Results You Can Measure.
             </h2>
-            <p className="mt-4 text-slate-400 max-w-xl mx-auto text-base">
-              Not testimonials written by our marketing team. Real outcomes from real engagements.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((t) => (
-              <div
-                key={t.id}
-                className="group bg-white/[0.03] border border-white/10 rounded-xl p-6 card-hover flex flex-col gap-5"
-              >
-                <div className="font-syne text-5xl text-accent/20 leading-none select-none">"</div>
-                <p className="text-slate-300 text-sm leading-relaxed flex-1 -mt-4">
-                  {t.quote}
-                </p>
-                {t.metric && (
-                  <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 rounded-full px-3 py-1 w-fit">
-                    <span className="text-accent text-xs font-syne font-semibold">{t.metric}</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {whyCards.map(({ icon: Icon, title, desc }) => (
+                <div key={title} className="bg-white/5 border border-white/10 rounded-xl p-4 hover:shadow-md hover:border-accent/30 transition-all duration-200">
+                  <div className="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center mb-3">
+                    <Icon className="w-4 h-4 text-accent" />
                   </div>
-                )}
-                <div className="flex items-center gap-3 pt-4 border-t border-white/5">
-                  <div className="w-10 h-10 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-xl">
-                    {t.avatar}
-                  </div>
-                  <div>
-                    <div className="font-syne font-semibold text-white text-sm">{t.name}</div>
-                    <div className="text-slate-500 text-xs">
-                      {t.role}, {t.company}
-                    </div>
-                  </div>
+                  <h3 className="font-syne font-bold text-white text-sm mb-1">{title}</h3>
+                  <p className="text-slate-400 text-xs leading-relaxed">{desc}</p>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </SectionWrapper>
 
-      {/* 9. CTA BANNER */}
-      <SectionWrapper id="cta" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            className="relative rounded-2xl overflow-hidden p-10 sm:p-16 text-center"
-            style={{
-              background: 'linear-gradient(135deg, rgba(0,229,255,0.12) 0%, rgba(0,128,255,0.08) 50%, rgba(0,229,255,0.05) 100%)',
-              border: '1px solid rgba(0,229,255,0.25)',
-            }}
-          >
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{ background: 'radial-gradient(ellipse at center, rgba(0,229,255,0.08) 0%, transparent 70%)' }}
-            />
-            <div className="relative z-10">
-              <p className="text-accent text-sm font-medium uppercase tracking-widest mb-4">
-                Take the First Step
-              </p>
-              <h2 className="font-syne font-extrabold text-3xl sm:text-4xl md:text-5xl text-white mb-4">
-                Know Where You Stand Before Attackers Do
-              </h2>
-              <p className="text-slate-300 text-base sm:text-lg max-w-xl mx-auto mb-8 leading-relaxed">
-                Our security consultants will assess your current posture, identify your highest-risk gaps, and give you a practical roadmap forward — complimentary, with no obligation.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-2 bg-accent text-primary font-syne font-bold px-8 py-4 rounded-lg hover:bg-accent/90 transition-all duration-200 hover:shadow-lg hover:shadow-accent/30 text-base"
-                >
-                  Book Your Free Assessment
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-                <Link
-                  to="/case-studies"
-                  className="inline-flex items-center gap-2 border border-white/30 text-white font-syne font-semibold px-8 py-4 rounded-lg hover:border-accent/50 hover:text-accent transition-all duration-200 text-base"
-                >
-                  See Our Results
-                </Link>
-              </div>
+          <div>
+            <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">Industries We Serve</p>
+            <h2 className="font-syne font-bold text-2xl sm:text-3xl text-white mb-6">Deep Expertise Across Every Sector</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              {industries.map((ind) => (
+                <div key={ind.id} className="bg-white/5 border border-white/10 rounded-xl p-3 text-center hover:shadow-md hover:border-accent/30 transition-all duration-200">
+                  <div className="text-2xl mb-1.5">{ind.icon}</div>
+                  <div className="font-syne font-semibold text-slate-800 text-xs">{ind.name}</div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-6">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 bg-accent text-white font-syne font-bold text-sm px-6 py-3 rounded-lg hover:bg-accent/90 transition-all duration-200 hover:shadow-lg hover:shadow-accent/25"
+              >
+                Secure Your Organization <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </div>
-      </SectionWrapper>
+      </div>
+    </section>
+  );
+}
+
+/* ─── PANEL 4 — Testimonials + CTA ──────────────────────── */
+function SocialPanel() {
+  return (
+    <section className="relative h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-[#0D0D0D]">
+      <div className="absolute inset-0 grid-bg opacity-60" />
+      <div
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse at bottom, rgba(249,115,22,0.05) 0%, transparent 70%)' }}
+      />
+      <div className="relative z-10 w-full max-w-6xl mx-auto">
+        <div className="text-center mb-10">
+          <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">Client Stories</p>
+          <h2 className="font-syne font-bold text-3xl sm:text-4xl text-white">Trusted by Security Leaders Across India</h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+          {testimonials.map((t) => (
+            <div key={t.id} className="bg-white/5 border border-white/10 rounded-xl p-5 hover:shadow-md hover:border-accent/30 transition-all duration-200 flex flex-col shadow-sm">
+              <div className="flex items-center gap-1 mb-3">
+                {[...Array(5)].map((_, i) => <Star key={i} className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />)}
+              </div>
+              <p className="text-slate-300 text-xs leading-relaxed flex-1 mb-4 italic">"{t.quote}"</p>
+              <div className="border-t border-slate-100 pt-3 flex items-center gap-3">
+                <span className="text-2xl">{t.avatar}</span>
+                <div>
+                  <div className="font-syne font-bold text-white text-sm">{t.name}</div>
+                  <div className="text-slate-500 text-xs">{t.role}, {t.company}</div>
+                </div>
+              </div>
+              {t.metric && (
+                <div className="mt-3 bg-accent/5 border border-accent/20 rounded-lg px-3 py-2">
+                  <span className="text-accent text-xs font-syne font-semibold">{t.metric}</span>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <div
+          className="rounded-2xl p-8 sm:p-10 text-center"
+          style={{
+            background: 'linear-gradient(135deg, rgba(249,115,22,0.06) 0%, rgba(0,128,255,0.04) 100%)',
+            border: '1px solid rgba(249,115,22,0.15)',
+          }}
+        >
+          <h2 className="font-syne font-bold text-2xl sm:text-3xl text-white mb-3">Ready to Harden Your Defenses?</h2>
+          <p className="text-slate-400 text-base max-w-lg mx-auto mb-6">
+            Get a free security assessment from our certified experts. No commitment required.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link to="/contact" className="inline-flex items-center justify-center gap-2 bg-accent text-white font-syne font-bold px-8 py-4 rounded-lg hover:bg-accent/90 transition-all duration-200 hover:shadow-lg hover:shadow-accent/25 text-sm">
+              Start a Conversation <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link to="/case-studies" className="inline-flex items-center justify-center gap-2 border border-white/15 text-slate-300 font-syne font-semibold px-8 py-4 rounded-lg hover:bg-white/10 transition-all duration-200 text-sm">
+              Read Case Studies
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Home page ──────────────────────────────────────────── */
+export default function Home() {
+  const bottomPanels = [
+    { bg: '#111111', content: <WhyPanel /> },
+    { bg: '#0D0D0D', content: <SocialPanel /> },
+  ];
+
+  return (
+    <div className="pt-16">
+      <HeroGlobeSection />
+      <HorizontalServicesScroll />
+      <PageStack panels={bottomPanels} />
     </div>
   );
 }
