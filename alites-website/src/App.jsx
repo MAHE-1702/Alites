@@ -44,6 +44,7 @@ function AnimatedRoutes() {
 
 export default function App() {
   return (
+    
     <div className="min-h-screen bg-primary text-slate-200 font-dm">
       <Navbar />
       <main>

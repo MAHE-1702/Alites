@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import SectionWrapper from '../components/SectionWrapper';
 import ServiceCard from '../components/ServiceCard';
 import { services } from '../data/services';
+import ServicesStackScroll from '../components/Servicesstackscroll';
 
 const methodology = [
   {
@@ -31,7 +32,7 @@ const methodology = [
 
 export default function Services() {
   return (
-    <div className="pt-16 overflow-x-hidden">
+    <div className="pt-16">
       {/* Page Hero */}
       <section className="relative py-20 sm:py-28 overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-40" />
@@ -69,29 +70,7 @@ export default function Services() {
       </section>
 
       {/* Services Grid with Stat Badges */}
-      <SectionWrapper className="pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            {services.map((service) => (
-              <div key={service.id} className="flex flex-col gap-0">
-                <ServiceCard
-                  icon={service.icon}
-                  title={service.title}
-                  description={service.description}
-                  features={service.features}
-                  showDetails={true}
-                />
-                {service.stat && (
-                  <div className="bg-accent/5 border border-accent/20 border-t-0 rounded-b-xl px-5 py-4 flex items-start gap-3">
-                    <span className="font-syne font-extrabold text-accent text-lg shrink-0 leading-tight">{service.stat.value}</span>
-                    <p className="text-slate-500 text-xs leading-relaxed">{service.stat.label}</p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </SectionWrapper>
+<ServicesStackScroll />
 
       {/* Methodology Section */}
       <SectionWrapper className="py-20 bg-white/5 border-y border-white/5">
@@ -168,3 +147,32 @@ export default function Services() {
     </div>
   );
 }
+
+
+
+
+
+
+      // <SectionWrapper className="pb-20">
+      //   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      //     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      //       {services.map((service) => (
+      //         <div key={service.id} className="flex flex-col gap-0">
+      //           <ServiceCard
+      //             icon={service.icon}
+      //             title={service.title}
+      //             description={service.description}
+      //             features={service.features}
+      //             showDetails={true}
+      //           />
+      //           {service.stat && (
+      //             <div className="bg-accent/5 border border-accent/20 border-t-0 rounded-b-xl px-5 py-4 flex items-start gap-3">
+      //               <span className="font-syne font-extrabold text-accent text-lg shrink-0 leading-tight">{service.stat.value}</span>
+      //               <p className="text-slate-500 text-xs leading-relaxed">{service.stat.label}</p>
+      //             </div>
+      //           )}
+      //         </div>
+      //       ))}
+      //     </div>
+      //   </div>
+      // </SectionWrapper>
