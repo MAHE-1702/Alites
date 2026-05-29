@@ -7,8 +7,8 @@ const panels = [
     category: "01 / Managed Services",
     headline: "Always-On Protection",
     sub: "Continuous security operations so threats are caught before they escalate — 24/7/365, no gaps.",
-    accent: "#F97316",
-    bg: "#080808",
+    accent: "var(--color-accent-primary)",
+    bg: "var(--color-bg-primary)",
     services: [
       {
         icon: "🛡",
@@ -41,8 +41,8 @@ const panels = [
     category: "02 / Advisory Services",
     headline: "Strategic Security Guidance",
     sub: "Expert advisors embedded in your business — turning complex security challenges into clear, executable strategy.",
-    accent: "#F59E0B",
-    bg: "#090909",
+    accent: "var(--color-accent-hover)",
+    bg: "var(--color-bg-secondary)",
     services: [
       {
         icon: "📋",
@@ -75,8 +75,8 @@ const panels = [
     category: "03 / Professional Services",
     headline: "Hands-On Delivery",
     sub: "Our engineers embedded alongside your team — building, hardening, and operating security capabilities that last.",
-    accent: "#10B981",
-    bg: "#0A0A0A",
+    accent: "var(--color-accent-primary)",
+    bg: "var(--color-bg-surface)",
     services: [
       {
         icon: "🤝",
@@ -109,8 +109,8 @@ const panels = [
     category: "04 / Complimentary Tools",
     headline: "Know Your Baseline",
     sub: "Free, no-obligation assessments that give you an honest picture of where you stand — so you know exactly where to focus.",
-    accent: "#8B5CF6",
-    bg: "#0B0B0B",
+    accent: "var(--color-accent-hover)",
+    bg: "var(--color-bg-elevated)",
     services: [
       {
         icon: "📊",
@@ -121,7 +121,7 @@ const panels = [
         stat: { val: "5 functions", label: "Assessed across Identify, Protect, Detect, Respond, Recover" },
       },
       {
-        icon: "🇪🇺",
+        icon: "📊",
         name: "NIS2 Assessment",
         abbr: "Free Tool",
         desc: "Check your readiness for the EU's NIS2 Directive before regulators do. Our tool maps your controls to NIS2 requirements and surfaces the highest-priority gaps first.",
@@ -145,8 +145,8 @@ const panels = [
 function ServiceCard({ icon, name, abbr, desc, tags, stat, accent }) {
   return (
     <div style={{
-      background: "rgba(255,255,255,0.04)",
-      border: "1px solid rgba(255,255,255,0.08)",
+      background: "var(--color-bg-surface)",
+      border: "1px solid var(--color-border)",
       borderRadius: 16,
       padding: "24px",
       display: "flex",
@@ -157,17 +157,17 @@ function ServiceCard({ icon, name, abbr, desc, tags, stat, accent }) {
     }}>
       <div>
         <div style={{ fontSize: 26, lineHeight: 1, marginBottom: 10 }}>{icon}</div>
-        <div style={{ fontSize: 15, fontWeight: 700, color: "#fff", letterSpacing: "-0.01em" }}>{name}</div>
-        <div style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", marginTop: 3, fontWeight: 500 }}>{abbr}</div>
+        <div style={{ fontSize: 15, fontWeight: 700, color: "var(--color-text-primary)", letterSpacing: "-0.01em" }}>{name}</div>
+        <div style={{ fontSize: 11, color: "var(--color-text-muted)", marginTop: 3, fontWeight: 500 }}>{abbr}</div>
       </div>
-      <p style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", lineHeight: 1.65, margin: 0, flex: 1 }}>{desc}</p>
+      <p style={{ fontSize: 13, color: "var(--color-text-secondary)", lineHeight: 1.65, margin: 0, flex: 1 }}>{desc}</p>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
         {tags.map((t) => (
           <span key={t} style={{
             fontSize: 11,
-            color: "rgba(255,255,255,0.4)",
-            background: "rgba(255,255,255,0.06)",
-            border: "1px solid rgba(255,255,255,0.09)",
+            color: "var(--color-text-muted)",
+            background: "var(--color-bg-secondary)",
+            border: "1px solid var(--color-border-subtle)",
             borderRadius: 100,
             padding: "3px 10px",
             fontWeight: 500,
@@ -175,7 +175,7 @@ function ServiceCard({ icon, name, abbr, desc, tags, stat, accent }) {
         ))}
       </div>
       <div style={{
-        borderTop: "1px solid rgba(255,255,255,0.07)",
+        borderTop: "1px solid var(--color-border-subtle)",
         paddingTop: 14,
         display: "flex",
         alignItems: "flex-start",
@@ -189,7 +189,7 @@ function ServiceCard({ icon, name, abbr, desc, tags, stat, accent }) {
           lineHeight: 1,
           whiteSpace: "nowrap",
         }}>{stat.val}</span>
-        <span style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", lineHeight: 1.5 }}>{stat.label}</span>
+        <span style={{ fontSize: 11, color: "var(--color-text-muted)", lineHeight: 1.5 }}>{stat.label}</span>
       </div>
     </div>
   );
@@ -271,7 +271,7 @@ function Panel({ panel, index, totalPanels, progress }) {
             fontFamily: "'Syne', sans-serif",
             fontWeight: 800,
             fontSize: "clamp(30px, 4vw, 52px)",
-            color: "#fff",
+            color: "var(--color-text-primary)",
             margin: 0,
             lineHeight: 1.05,
             letterSpacing: "-0.025em",
@@ -280,7 +280,7 @@ function Panel({ panel, index, totalPanels, progress }) {
           </h2>
           <p style={{
             fontSize: 15,
-            color: "rgba(255,255,255,0.4)",
+            color: "var(--color-text-secondary)",
             margin: 0,
             lineHeight: 1.7,
             maxWidth: 500,
@@ -314,7 +314,7 @@ function ProgressDot({ index, totalPanels, progress, panel }) {
   const start = index * step;
   const end = (index + 1) * step;
   const p = useTransform(progress, [start, end], [0, 1]);
-  const bg = useTransform(p, (v) => v > 0.1 ? panel.accent : "rgba(255,255,255,0.2)");
+  const bg = useTransform(p, (v) => v > 0.1 ? panel.accent : "var(--color-border)");
   const width = useTransform(p, [0, 1], [6, 20]);
   return <motion.div style={{ height: 6, width, borderRadius: 3, background: bg, flexShrink: 0 }} />;
 }
@@ -353,7 +353,7 @@ function ScrollHint({ progress }) {
     }}>
       <span style={{
         fontSize: 10,
-        color: "rgba(255,255,255,0.25)",
+        color: "var(--color-text-muted)",
         letterSpacing: "0.12em",
         textTransform: "uppercase",
         fontFamily: "'Syne', sans-serif",
@@ -365,7 +365,7 @@ function ScrollHint({ progress }) {
         style={{
           width: 1,
           height: 28,
-          background: "linear-gradient(180deg, rgba(249,115,22,0.7) 0%, transparent 100%)",
+          background: "linear-gradient(180deg, var(--color-accent-primary) 0%, transparent 100%)",
         }}
       />
     </motion.div>
@@ -430,7 +430,7 @@ export default function ServicesStackScroll() {
         top: 64, // Accounts for navbar height
         height: "calc(100vh - 64px)",
         overflow: "hidden",
-        background: "#080808",
+        background: "var(--color-bg-primary)",
       }}>
 
         {/* Top-left label */}
@@ -447,14 +447,14 @@ export default function ServicesStackScroll() {
           <div style={{
             width: 7, height: 7,
             borderRadius: "50%",
-            background: "#F97316",
-            boxShadow: "0 0 10px rgba(249,115,22,0.7)",
+            background: "#0054D2",
+            boxShadow: "0 0 10px rgba(0, 84, 210, 0.7)",
           }} />
           <span style={{
             fontFamily: "'Syne', sans-serif",
             fontWeight: 700,
             fontSize: 12,
-            color: "rgba(255,255,255,0.45)",
+            color: "var(--color-text-muted)",
             letterSpacing: "0.1em",
             textTransform: "uppercase",
           }}>Services</span>
@@ -469,7 +469,7 @@ export default function ServicesStackScroll() {
           fontFamily: "'Syne', sans-serif",
           fontWeight: 700,
           fontSize: 12,
-          color: "rgba(255,255,255,0.3)",
+          color: "var(--color-text-muted)",
           letterSpacing: "0.06em",
           pointerEvents: "none",
         }}>

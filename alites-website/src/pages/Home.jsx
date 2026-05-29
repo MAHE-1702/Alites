@@ -39,19 +39,19 @@ function ProgressDots({ scrollYProgress, count }) {
 function HorizServiceCard({ service }) {
   const Icon = serviceIconMap[service.icon] || Shield;
   return (
-    <div className="h-full bg-white/5 border border-white/10 rounded-2xl overflow-hidden shadow-sm flex flex-col md:flex-row">
+    <div className="h-full bg-surface border border-border rounded-2xl overflow-hidden shadow-card flex flex-col md:flex-row">
       <div className="h-1 w-full md:w-1 md:h-full bg-gradient-to-r md:bg-gradient-to-b from-accent/60 via-accent to-accent/20 shrink-0" />
       <div className="flex flex-col md:flex-row flex-1 p-7 sm:p-10 gap-8">
         <div className="md:w-1/2 flex flex-col justify-center">
           <div className="w-14 h-14 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-5">
             <Icon className="w-7 h-7 text-accent" />
           </div>
-          <h2 className="font-syne font-bold text-2xl sm:text-3xl text-white mb-4 leading-snug">{service.title}</h2>
-          <p className="text-slate-400 text-sm sm:text-base leading-relaxed">{service.description}</p>
+          <h2 className="font-syne font-bold text-2xl sm:text-3xl text-text-base mb-4 leading-snug">{service.title}</h2>
+          <p className="text-text-sub text-sm sm:text-base leading-relaxed">{service.description}</p>
           {service.stat && (
-            <div className="mt-6 bg-accent/5 border border-accent/20 rounded-xl p-4">
+            <div className="mt-6 bg-accent-muted border border-accent-dim rounded-xl p-4">
               <span className="font-syne font-extrabold text-2xl text-accent">{service.stat.value}</span>
-              <p className="text-slate-400 text-xs mt-1 leading-relaxed">{service.stat.label}</p>
+              <p className="text-text-sub text-xs mt-1 leading-relaxed">{service.stat.label}</p>
             </div>
           )}
         </div>
@@ -95,11 +95,11 @@ function HorizontalServicesScroll() {
 
   if (isMobile) {
     return (
-      <div className="py-16 px-4 bg-[#0D0D0D]">
+      <div className="py-16 px-4 bg-primary">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-10">
             <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">What We Do</p>
-            <h2 className="font-syne font-bold text-3xl text-white mb-2">Full-Spectrum Cybersecurity</h2>
+            <h2 className="font-syne font-bold text-3xl text-text-base mb-2">Full-Spectrum Cybersecurity</h2>
           </div>
           <div className="space-y-6">
             {services.map(svc => <div key={svc.id}><HorizServiceCard service={svc} /></div>)}
@@ -110,11 +110,11 @@ function HorizontalServicesScroll() {
   }
 
   return (
-    <div ref={containerRef} style={{ height: `${services.length * 100}vh` }} className="relative bg-[#0D0D0D]">
+    <div ref={containerRef} style={{ height: `${services.length * 100}vh` }} className="relative bg-primary">
       <div className="sticky top-0 h-screen flex flex-col overflow-hidden">
         <div className="pt-24 pb-6 text-center shrink-0">
           <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">What We Do</p>
-          <h2 className="font-syne font-bold text-3xl sm:text-4xl text-white mb-2">Full-Spectrum Cybersecurity</h2>
+          <h2 className="font-syne font-bold text-3xl sm:text-4xl text-text-base mb-2">Full-Spectrum Cybersecurity</h2>
           <p className="text-slate-500 text-sm">Scroll to explore each service →</p>
         </div>
 
@@ -130,7 +130,7 @@ function HorizontalServicesScroll() {
 
         <ProgressDots scrollYProgress={scrollYProgress} count={services.length} />
 
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-slate-200">
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-border">
           <motion.div style={{ scaleX: scrollYProgress, transformOrigin: 'left' }} className="h-full bg-accent" />
         </div>
       </div>
@@ -150,23 +150,23 @@ const whyCards = [
 
 function WhyPanel() {
   return (
-    <section className="relative h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-[#111111]">
+    <section className="relative h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-secondary">
       <div className="absolute inset-0 grid-bg opacity-60" />
       <div className="relative z-10 w-full max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
           <div>
             <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">Why Alites</p>
-            <h2 className="font-syne font-bold text-3xl sm:text-4xl text-white mb-6">
+            <h2 className="font-syne font-bold text-3xl sm:text-4xl text-text-base mb-6">
               Security You Can Trust. Results You Can Measure.
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {whyCards.map(({ icon: Icon, title, desc }) => (
-                <div key={title} className="bg-white/5 border border-white/10 rounded-xl p-4 hover:shadow-md hover:border-accent/30 transition-all duration-200">
-                  <div className="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center mb-3">
+                <div key={title} className="bg-surface border border-border rounded-xl p-4 hover:shadow-card-hover hover:border-accent transition-all duration-200">
+                  <div className="w-8 h-8 rounded-lg bg-accent-muted border border-accent-dim flex items-center justify-center mb-3">
                     <Icon className="w-4 h-4 text-accent" />
                   </div>
-                  <h3 className="font-syne font-bold text-white text-sm mb-1">{title}</h3>
-                  <p className="text-slate-400 text-xs leading-relaxed">{desc}</p>
+                  <h3 className="font-syne font-bold text-text-base text-sm mb-1">{title}</h3>
+                  <p className="text-text-sub text-xs leading-relaxed">{desc}</p>
                 </div>
               ))}
             </div>
@@ -174,12 +174,12 @@ function WhyPanel() {
 
           <div>
             <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">Industries We Serve</p>
-            <h2 className="font-syne font-bold text-2xl sm:text-3xl text-white mb-6">Deep Expertise Across Every Sector</h2>
+            <h2 className="font-syne font-bold text-2xl sm:text-3xl text-text-base mb-6">Deep Expertise Across Every Sector</h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
               {industries.map((ind) => (
-                <div key={ind.id} className="bg-white/5 border border-white/10 rounded-xl p-3 text-center hover:shadow-md hover:border-accent/30 transition-all duration-200">
+                <div key={ind.id} className="bg-surface border border-border rounded-xl p-3 text-center hover:shadow-card-hover hover:border-accent transition-all duration-200">
                   <div className="text-2xl mb-1.5">{ind.icon}</div>
-                  <div className="font-syne font-semibold text-slate-800 text-xs">{ind.name}</div>
+                  <div className="font-syne font-semibold text-text-base text-xs">{ind.name}</div>
                 </div>
               ))}
             </div>
@@ -201,34 +201,34 @@ function WhyPanel() {
 /* ─── PANEL 4 — Testimonials + CTA ──────────────────────── */
 function SocialPanel() {
   return (
-    <section className="relative h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-[#0D0D0D]">
+    <section className="relative h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-primary">
       <div className="absolute inset-0 grid-bg opacity-60" />
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at bottom, rgba(249,115,22,0.05) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(ellipse at bottom, var(--color-accent-light) 0.05%, transparent 70%)' }}
       />
       <div className="relative z-10 w-full max-w-6xl mx-auto">
         <div className="text-center mb-10">
           <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">Client Stories</p>
-          <h2 className="font-syne font-bold text-3xl sm:text-4xl text-white">Trusted by Security Leaders Across India</h2>
+          <h2 className="font-syne font-bold text-3xl sm:text-4xl text-text-base">Trusted by Security Leaders Across India</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
           {testimonials.map((t) => (
-            <div key={t.id} className="bg-white/5 border border-white/10 rounded-xl p-5 hover:shadow-md hover:border-accent/30 transition-all duration-200 flex flex-col shadow-sm">
+            <div key={t.id} className="bg-surface border border-border rounded-xl p-5 hover:shadow-card-hover hover:border-accent transition-all duration-200 flex flex-col shadow-card">
               <div className="flex items-center gap-1 mb-3">
-                {[...Array(5)].map((_, i) => <Star key={i} className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />)}
+                {[...Array(5)].map((_, i) => <Star key={i} className={`w-3.5 h-3.5 text-warning fill-warning`} />)}
               </div>
-              <p className="text-slate-300 text-xs leading-relaxed flex-1 mb-4 italic">"{t.quote}"</p>
+              <p className="text-text-sub text-xs leading-relaxed flex-1 mb-4 italic">"{t.quote}"</p>
               <div className="border-t border-slate-100 pt-3 flex items-center gap-3">
                 <span className="text-2xl">{t.avatar}</span>
                 <div>
-                  <div className="font-syne font-bold text-white text-sm">{t.name}</div>
-                  <div className="text-slate-500 text-xs">{t.role}, {t.company}</div>
+                  <div className="font-syne font-bold text-text-base text-sm">{t.name}</div>
+                  <div className="text-text-muted text-xs">{t.role}, {t.company}</div>
                 </div>
               </div>
               {t.metric && (
-                <div className="mt-3 bg-accent/5 border border-accent/20 rounded-lg px-3 py-2">
+                <div className="mt-3 bg-accent-muted border border-accent-dim rounded-lg px-3 py-2">
                   <span className="text-accent text-xs font-syne font-semibold">{t.metric}</span>
                 </div>
               )}
@@ -239,19 +239,19 @@ function SocialPanel() {
         <div
           className="rounded-2xl p-8 sm:p-10 text-center"
           style={{
-            background: 'linear-gradient(135deg, rgba(249,115,22,0.06) 0%, rgba(0,128,255,0.04) 100%)',
-            border: '1px solid rgba(249,115,22,0.15)',
+            background: 'linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-bg-secondary) 100%)',
+            border: '1px solid var(--color-border)',
           }}
         >
-          <h2 className="font-syne font-bold text-2xl sm:text-3xl text-white mb-3">Ready to Harden Your Defenses?</h2>
-          <p className="text-slate-400 text-base max-w-lg mx-auto mb-6">
+          <h2 className="font-syne font-bold text-2xl sm:text-3xl text-text-base mb-3">Ready to Harden Your Defenses?</h2>
+          <p className="text-text-sub text-base max-w-lg mx-auto mb-6">
             Get a free security assessment from our certified experts. No commitment required.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link to="/contact" className="inline-flex items-center justify-center gap-2 bg-accent text-white font-syne font-bold px-8 py-4 rounded-lg hover:bg-accent/90 transition-all duration-200 hover:shadow-lg hover:shadow-accent/25 text-sm">
+            <Link to="/contact" className="inline-flex items-center justify-center gap-2 bg-accent text-white font-syne font-bold px-8 py-4 rounded-lg hover:bg-accent-bright transition-all duration-200 hover:shadow-lg hover:shadow-accent-muted text-sm">
               Start a Conversation <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link to="/case-studies" className="inline-flex items-center justify-center gap-2 border border-white/15 text-slate-300 font-syne font-semibold px-8 py-4 rounded-lg hover:bg-white/10 transition-all duration-200 text-sm">
+            <Link to="/case-studies" className="inline-flex items-center justify-center gap-2 border border-border text-text-sub font-syne font-semibold px-8 py-4 rounded-lg hover:bg-surface transition-all duration-200 text-sm">
               Read Case Studies
             </Link>
           </div>

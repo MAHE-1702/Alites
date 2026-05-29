@@ -174,7 +174,7 @@ export default function Industries() {
         <div className="absolute inset-0 grid-bg opacity-40" />
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at top, rgba(0,229,255,0.1) 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(ellipse at top, var(--color-accent-light) 0%, transparent 70%)' }}
         />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
@@ -190,7 +190,7 @@ export default function Industries() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-syne font-extrabold text-4xl sm:text-5xl md:text-6xl text-white mb-6"
+            className="font-syne font-extrabold text-4xl sm:text-5xl md:text-6xl text-text-base mb-6"
           >
             We Know Your Industry's <span className="text-gradient">Threats</span>
           </motion.h1>
@@ -198,7 +198,7 @@ export default function Industries() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed"
+            className="text-text-sub text-lg max-w-2xl mx-auto leading-relaxed"
           >
             Generic cybersecurity doesn't protect specific industries. Our domain experts understand your regulatory environment, attack vectors, and operational constraints — and build security programs around them.
           </motion.p>
@@ -212,36 +212,36 @@ export default function Industries() {
             {industries.map((industry) => (
               <div
                 key={industry.id}
-                className="group bg-white/[0.03] border border-white/10 rounded-xl p-6 card-hover flex flex-col gap-5"
+                className="group bg-surface border border-border rounded-xl p-6 card-hover flex flex-col gap-5 shadow-card"
               >
                 <div className="flex items-start gap-4">
                   <div className="w-14 h-14 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-3xl shrink-0 group-hover:bg-accent/20 transition-colors">
                     {industry.icon}
                   </div>
                   <div>
-                    <h3 className="font-syne font-bold text-white text-lg mb-1 group-hover:text-accent transition-colors">
+                    <h3 className="font-syne font-bold text-text-base text-lg mb-1 group-hover:text-accent transition-colors">
                       {industry.name}
                     </h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">{industry.description}</p>
+                    <p className="text-text-sub text-sm leading-relaxed">{industry.description}</p>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 pt-2 border-t border-white/5">
+                <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border-subtle">
                   <div>
-                    <p className="text-slate-600 text-xs uppercase tracking-wider mb-2">Key Threats</p>
+                    <p className="text-text-muted text-xs uppercase tracking-wider mb-2">Key Threats</p>
                     <div className="flex flex-wrap gap-1.5">
                       {industry.threats.map((threat) => (
-                        <span key={threat} className="text-xs bg-red-500/10 border border-red-500/20 text-red-400 px-2 py-0.5 rounded-full">
+                        <span key={threat} className="text-xs bg-danger-bg border border-danger/20 text-danger px-2 py-0.5 rounded-full">
                           {threat}
                         </span>
                       ))}
                     </div>
                   </div>
                   <div>
-                    <p className="text-slate-600 text-xs uppercase tracking-wider mb-2">Frameworks</p>
+                    <p className="text-text-muted text-xs uppercase tracking-wider mb-2">Frameworks</p>
                     <div className="flex flex-wrap gap-1.5">
                       {industry.frameworks.map((fw) => (
-                        <span key={fw} className="text-xs bg-accent/10 border border-accent/20 text-accent px-2 py-0.5 rounded-full">
+                        <span key={fw} className="text-xs bg-accent-muted border border-accent/20 text-accent px-2 py-0.5 rounded-full">
                           {fw}
                         </span>
                       ))}
@@ -255,27 +255,27 @@ export default function Industries() {
       </SectionWrapper>
 
       {/* Challenges Section */}
-      <SectionWrapper className="py-20 bg-white/[0.015] border-y border-white/5">
+      <SectionWrapper className="py-20 bg-surface border-y border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">
               Universal Challenges
             </p>
-            <h2 className="font-syne font-bold text-3xl sm:text-4xl text-white">
+            <h2 className="font-syne font-bold text-3xl sm:text-4xl text-text-base">
               The Security Problems Every Industry Faces
             </h2>
-            <p className="mt-4 text-slate-400 max-w-2xl mx-auto text-base">
+            <p className="mt-4 text-text-sub max-w-2xl mx-auto text-base">
               Regardless of sector, three fundamental challenges underpin every organisation's cybersecurity risk — and every Alites engagement is designed to address them.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {challenges.map((challenge, idx) => (
-              <div key={idx} className="bg-white/[0.03] border border-white/10 rounded-xl p-6 card-hover">
-                <div className="font-syne font-extrabold text-5xl text-accent/15 mb-4 leading-none select-none">
+              <div key={idx} className="bg-secondary border border-border rounded-xl p-6 card-hover shadow-card">
+                <div className="font-syne font-extrabold text-5xl text-accent-muted/15 mb-4 leading-none select-none">
                   {String(idx + 1).padStart(2, '0')}
                 </div>
-                <h3 className="font-syne font-bold text-white text-lg mb-3">{challenge.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">{challenge.description}</p>
+                <h3 className="font-syne font-bold text-text-base text-lg mb-3">{challenge.title}</h3>
+                <p className="text-text-sub text-sm leading-relaxed">{challenge.description}</p>
               </div>
             ))}
           </div>
@@ -286,15 +286,15 @@ export default function Industries() {
       <SectionWrapper className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ShieldAlert className="w-10 h-10 text-accent mx-auto mb-5" />
-          <h2 className="font-syne font-bold text-2xl sm:text-3xl text-white mb-4">
+          <h2 className="font-syne font-bold text-2xl sm:text-3xl text-text-base mb-4">
             Tailored Security for Your Industry
           </h2>
-          <p className="text-slate-400 text-base max-w-xl mx-auto mb-8">
+          <p className="text-text-sub text-base max-w-xl mx-auto mb-8">
             Our industry specialists will build a security program aligned with your sector's specific risks, regulations, and operational requirements — not a template built for someone else.
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 bg-accent text-primary font-syne font-bold px-8 py-4 rounded-lg hover:bg-accent/90 transition-all duration-200 hover:shadow-lg hover:shadow-accent/25"
+            className="inline-flex items-center gap-2 bg-accent text-white font-syne font-bold px-8 py-4 rounded-lg hover:bg-accent-bright transition-all duration-200 hover:shadow-lg hover:shadow-accent-muted"
           >
             Discuss Your Industry
             <ArrowRight className="w-5 h-5" />

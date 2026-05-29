@@ -72,14 +72,14 @@ export default function About() {
         <div className="absolute inset-0 grid-bg opacity-40" />
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at top, rgba(249,115,22,0.08) 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(ellipse at top, var(--color-accent-light) 0%, transparent 70%)' }}
         />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="font-syne font-extrabold text-4xl sm:text-5xl md:text-6xl text-white mb-6"
+            className="font-syne font-extrabold text-4xl sm:text-5xl md:text-6xl text-text-base mb-6"
           >
             Built on Trust. <span className="text-gradient">Proven in the Field.</span>
           </motion.h1>
@@ -87,7 +87,7 @@ export default function About() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed"
+            className="text-text-sub text-lg max-w-2xl mx-auto leading-relaxed"
           >
             Twelve years of defending organisations against the most sophisticated cyber threats in India and beyond. Our story is one of relentless commitment to keeping what matters most — your people, data, and operations — safe.
           </motion.p>
@@ -102,10 +102,10 @@ export default function About() {
               <p className="text-accent text-sm font-medium uppercase tracking-widest mb-4">
                 Our Story
               </p>
-              <h2 className="font-syne font-bold text-3xl sm:text-4xl text-white mb-6">
+              <h2 className="font-syne font-bold text-3xl sm:text-4xl text-text-base mb-6">
                 Started with a Problem. Built on Results.
               </h2>
-              <div className="space-y-4 text-slate-400 leading-relaxed">
+              <div className="space-y-4 text-text-sub leading-relaxed">
                 <p>
                   Alites was founded in 2012 in Coimbatore, Tamil Nadu, after our founder Rajesh Kumar saw a pattern he couldn't ignore: small and mid-sized businesses were facing the same level of cyber threats as large enterprises, but had no access to the calibre of security expertise those threats demanded.
                 </p>
@@ -125,7 +125,7 @@ export default function About() {
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-accent shrink-0" />
-                    <span className="text-slate-300 text-sm">{item}</span>
+                    <span className="text-text-sub text-sm">{item}</span>
                   </div>
                 ))}
               </div>
@@ -139,10 +139,10 @@ export default function About() {
               ].map(({ label, sub }) => (
                 <div
                   key={sub}
-                  className="bg-[#0D0D0D] border border-white/10 rounded-xl p-6 text-center card-hover"
+                  className="bg-surface border border-border rounded-xl p-6 text-center card-hover shadow-card"
                 >
                   <div className="font-syne font-extrabold text-3xl text-accent mb-1">{label}</div>
-                  <div className="text-slate-400 text-sm">{sub}</div>
+                  <div className="text-text-muted text-sm">{sub}</div>
                 </div>
               ))}
             </div>
@@ -151,29 +151,29 @@ export default function About() {
       </SectionWrapper>
 
       {/* Mission & Vision */}
-      <SectionWrapper className="py-20 bg-white/5 border-y border-white/5">
+      <SectionWrapper className="py-20 bg-surface border-y border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="font-syne font-bold text-3xl sm:text-4xl text-white">
+            <h2 className="font-syne font-bold text-3xl sm:text-4xl text-text-base">
               Mission &amp; Vision
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-[#0D0D0D] border border-accent/20 rounded-xl p-8 card-hover">
-              <div className="w-12 h-12 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center mb-5">
+            <div className="bg-secondary border border-accent/20 rounded-xl p-8 card-hover shadow-card">
+              <div className="w-12 h-12 rounded-lg bg-accent-muted border border-accent-dim flex items-center justify-center mb-5">
                 <Target className="w-6 h-6 text-accent" />
               </div>
-              <h3 className="font-syne font-bold text-white text-2xl mb-4">Our Mission</h3>
-              <p className="text-slate-400 leading-relaxed">
+              <h3 className="font-syne font-bold text-text-base text-2xl mb-4">Our Mission</h3>
+              <p className="text-text-sub leading-relaxed">
                 To deliver world-class cybersecurity services that give every organisation — not just those with enterprise budgets — the confidence to operate safely in an increasingly hostile digital environment. We are committed to honest assessments, practical solutions, measurable outcomes, and partnerships built on trust rather than contracts.
               </p>
             </div>
-            <div className="bg-[#0D0D0D] border border-white/10 rounded-xl p-8 card-hover">
-              <div className="w-12 h-12 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center mb-5">
+            <div className="bg-secondary border border-border rounded-xl p-8 card-hover shadow-card">
+              <div className="w-12 h-12 rounded-lg bg-accent-muted border border-accent-dim flex items-center justify-center mb-5">
                 <Eye className="w-6 h-6 text-accent" />
               </div>
-              <h3 className="font-syne font-bold text-white text-2xl mb-4">Our Vision</h3>
-              <p className="text-slate-400 leading-relaxed">
+              <h3 className="font-syne font-bold text-text-base text-2xl mb-4">Our Vision</h3>
+              <p className="text-text-sub leading-relaxed">
                 To be South Asia's most trusted cybersecurity firm — recognised not for the size of our team or the breadth of our certifications, but for the depth of trust our clients place in us. We envision a digital ecosystem where every organisation has access to the security expertise it needs to grow, innovate, and compete — safely.
               </p>
             </div>
@@ -188,7 +188,7 @@ export default function About() {
             <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">
               12 Years of Growth
             </p>
-            <h2 className="font-syne font-bold text-3xl sm:text-4xl text-white">
+            <h2 className="font-syne font-bold text-3xl sm:text-4xl text-text-base">
               Our Journey
             </h2>
           </div>
@@ -202,15 +202,15 @@ export default function About() {
                     idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                   }`}
                 >
-                  <div className="absolute left-6 md:left-1/2 -translate-x-1/2 top-1.5 w-3 h-3 rounded-full bg-accent border-2 border-white shadow-lg shadow-accent/30" />
+                  <div className="absolute left-6 md:left-1/2 -translate-x-1/2 top-1.5 w-3 h-3 rounded-full bg-accent border-2 border-primary shadow-lg shadow-accent/30" />
                   <div
-                    className={`ml-14 md:ml-0 md:w-1/2 bg-[#0D0D0D] border border-white/10 rounded-xl p-5 card-hover ${
+                    className={`ml-14 md:ml-0 md:w-1/2 bg-surface border border-border rounded-xl p-5 card-hover shadow-card ${
                       idx % 2 === 0 ? 'md:mr-8' : 'md:ml-8'
                     }`}
                   >
                     <div className="font-syne font-extrabold text-accent text-lg mb-1">{event.year}</div>
-                    <h3 className="font-syne font-bold text-white text-base mb-2">{event.title}</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">{event.description}</p>
+                    <h3 className="font-syne font-bold text-text-base text-base mb-2">{event.title}</h3>
+                    <p className="text-text-sub text-sm leading-relaxed">{event.description}</p>
                   </div>
                 </div>
               ))}
@@ -220,16 +220,16 @@ export default function About() {
       </SectionWrapper>
 
       {/* Technology Partners */}
-      <SectionWrapper className="py-16 bg-white/5 border-y border-white/5">
+      <SectionWrapper className="py-16 bg-surface border-y border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <p className="text-accent text-sm font-medium uppercase tracking-widest mb-3">
               Technology Partners
             </p>
-            <h2 className="font-syne font-bold text-2xl sm:text-3xl text-white">
+            <h2 className="font-syne font-bold text-2xl sm:text-3xl text-text-base">
               Powered by Industry-Leading Technology
             </h2>
-            <p className="mt-3 text-slate-500 text-sm max-w-xl mx-auto">
+            <p className="mt-3 text-text-muted text-sm max-w-xl mx-auto">
               Our partnerships with global security vendors mean our clients benefit from the best tools in the industry, integrated into our services without vendor lock-in.
             </p>
           </div>
@@ -237,9 +237,9 @@ export default function About() {
             {partners.map((partner) => (
               <div
                 key={partner}
-                className="border border-white/10 bg-[#0D0D0D] rounded-xl px-8 py-5 flex items-center justify-center card-hover min-w-[160px]"
+                className="border border-border bg-secondary rounded-xl px-8 py-5 flex items-center justify-center card-hover min-w-[160px] shadow-card"
               >
-                <span className="font-syne font-semibold text-slate-400 text-sm text-center">
+                <span className="font-syne font-semibold text-text-muted text-sm text-center">
                   {partner}
                 </span>
               </div>
@@ -251,15 +251,15 @@ export default function About() {
       {/* CTA */}
       <SectionWrapper className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-syne font-bold text-2xl sm:text-3xl text-white mb-4">
+          <h2 className="font-syne font-bold text-2xl sm:text-3xl text-text-base mb-4">
             Ready to Experience the Alites Difference?
           </h2>
-          <p className="text-slate-400 text-base max-w-xl mx-auto mb-8">
+          <p className="text-text-sub text-base max-w-xl mx-auto mb-8">
             Join 500+ organisations that trust Alites to protect their most critical assets — and stay protected, year after year.
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 bg-accent text-white font-syne font-bold px-8 py-4 rounded-lg hover:bg-accent/90 transition-all duration-200 hover:shadow-lg hover:shadow-accent/25"
+            className="inline-flex items-center gap-2 bg-accent text-white font-syne font-bold px-8 py-4 rounded-lg hover:bg-accent-bright transition-all duration-200 hover:shadow-lg hover:shadow-accent-muted"
           >
             Start the Conversation
             <ArrowRight className="w-5 h-5" />

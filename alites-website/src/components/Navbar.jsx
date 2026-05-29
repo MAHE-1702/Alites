@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Menu, X, Shield } from 'lucide-react';
+import { Menu, X, Shield, Sun, Moon } from 'lucide-react';
+import { useTheme } from '../hooks/useTheme';
 
 const menuVariants = {
   hidden: { opacity: 0, height: 0 },
@@ -38,7 +39,23 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const { theme, toggleTheme } = useTheme();
+
   useEffect(() => { setIsOpen(false); }, [location.pathname]);
+
+  const ThemeToggle = ({ className = "" }) => (
+    <button
+      onClick={toggleTheme}
+      className={`p-2 rounded-lg bg-surface border border-border hover:border-accent transition-all duration-200 ${className}`}
+      aria-label="Toggle theme"
+    >
+      {theme === 'light' ? (
+        <Moon className="w-5 h-5 text-accent" />
+      ) : (
+        <Sun className="w-5 h-5 text-accent" />
+      )}
+    </button>
+  );
 
   const getLinkClass = ({ isActive }) =>
     `text-sm font-medium transition-colors duration-200 relative group ${isActive ? 'text-accent' : 'text-slate-400 hover:text-accent'
@@ -78,7 +95,8 @@ export default function Navbar() {
           </nav>
 
           {/* CTA */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex items-center gap-4">
+            <ThemeToggle />
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 bg-accent text-white font-syne font-semibold text-sm px-5 py-2.5 rounded hover:bg-accent/90 transition-all duration-200 hover:shadow-md hover:shadow-accent/20"
@@ -131,13 +149,14 @@ export default function Navbar() {
                   </NavLink>
                 </motion.div>
               ))}
-              <motion.div variants={linkVariants} className="pt-3">
+              <motion.div variants={linkVariants} className="pt-3 flex items-center gap-3">
                 <Link
                   to="/contact"
-                  className="block w-full text-center bg-accent text-white font-syne font-semibold text-sm px-5 py-3 rounded hover:bg-accent/90 transition-colors"
+                  className="flex-1 text-center bg-accent text-white font-syne font-semibold text-sm px-5 py-3 rounded hover:bg-accent/90 transition-colors"
                 >
                   Get Free Assessment
                 </Link>
+                <ThemeToggle className="h-full py-3 px-4" />
               </motion.div>
             </div>
           </motion.div>

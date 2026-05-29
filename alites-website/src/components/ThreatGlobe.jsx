@@ -2,6 +2,7 @@ import { useRef, useMemo, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Line, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
+import { useTheme } from '../hooks/useTheme';
 
 const RADIUS = 1.3;
 
@@ -406,7 +407,7 @@ function makeArc(a, b, lift = 1.35, steps = 40) {
 //   return new THREE.QuadraticBezierCurve3(a, mid, b).getPoints(steps);
 // }
 
-function PulsingNode({ position, index }) {
+function PulsingNode({ position, index, accentPrimary, accentHover }) {
   const ref = useRef();
   useFrame(({ clock }) => {
     const s = 1 + 0.38 * Math.sin(clock.elapsedTime * 3.0 + index * 0.95);
@@ -415,21 +416,21 @@ function PulsingNode({ position, index }) {
   return (
     <mesh ref={ref} position={position}>
       <sphereGeometry args={[0.030, 8, 8]} />
-      <meshBasicMaterial color={index === 0 ? '#EF4444' : '#F97316'} transparent opacity={0.9} />
+      <meshBasicMaterial color={index === 0 ? accentHover : accentPrimary} transparent opacity={0.9} />
     </mesh>
   );
 }
 
-function HaloRing() {
+function HaloRing({ accentPrimary }) {
   return (
     <mesh rotation={[Math.PI / 2, 0, 0]}>
       <torusGeometry args={[RADIUS, 0.005, 8, 128]} />
-      <meshBasicMaterial color="#F97316" transparent opacity={0.20} />
+      <meshBasicMaterial color={accentPrimary} transparent opacity={0.20} />
     </mesh>
   );
 }
 
-function GlobeScene({ activeSection, isDragging, velocity, dragOffset, mousePos }) {
+function GlobeScene({ activeSection, isDragging, velocity, dragOffset, mousePos, accentPrimary, accentHover }) {
   const groupRef  = useRef();
   const autoAngle = useRef(0);
   // Smoothed hover offsets (lerped each frame)
@@ -478,15 +479,15 @@ function GlobeScene({ activeSection, isDragging, velocity, dragOffset, mousePos 
   return (
     <group ref={groupRef}>
       <EarthSphere />
-      <HaloRing />
+      <HaloRing accentPrimary={accentPrimary} />
       {nodePositions.map((pos, i) => (
-        <PulsingNode key={i} position={pos} index={i} />
+        <PulsingNode key={i} position={pos} index={i} accentPrimary={accentPrimary} accentHover={accentHover} />
       ))}
       {arcPoints.map((pts, i) => (
         <Line
           key={`s${activeSection}-${i}`}
           points={pts}
-          color="#F59E0B"
+          color={accentHover}
           lineWidth={1.0}
           transparent
           opacity={0.9}
@@ -497,12 +498,17 @@ function GlobeScene({ activeSection, isDragging, velocity, dragOffset, mousePos 
 }
 
 export default function ThreatGlobe({ activeSection = 0 }) {
+  const { theme } = useTheme();
   const wrapperRef = useRef(null);
   const isDragging = useRef(false);
   const lastPos    = useRef({ x: 0, y: 0 });
   const velocity   = useRef({ x: 0, y: 0 });
   const dragOffset = useRef({ x: 0, y: 0 });
   const mousePos   = useRef({ x: 0, y: 0 }); // normalized full-screen, -0.5 to +0.5
+
+  // Resolve accent colors from theme
+  const accentPrimary = theme === 'dark' ? '#9B59F7' : '#0054D2';
+  const accentHover = theme === 'dark' ? '#A875F8' : '#0080FF';
 
   // Track mouse across the entire window — no click needed
   useEffect(() => {
@@ -564,6 +570,8 @@ export default function ThreatGlobe({ activeSection = 0 }) {
           velocity={velocity}
           dragOffset={dragOffset}
           mousePos={mousePos}
+          accentPrimary={accentPrimary}
+          accentHover={accentHover}
         />
       </Canvas>
     </div>

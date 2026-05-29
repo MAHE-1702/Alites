@@ -48,20 +48,20 @@ function SectionContent({ section }) {
         <p className="text-accent text-xs font-medium uppercase tracking-widest mb-3">
           {section.eyebrow}
         </p>
-        <h2 className="font-syne font-extrabold text-4xl sm:text-5xl text-white leading-tight">
+        <h2 className="font-syne font-extrabold text-4xl sm:text-5xl text-text-base leading-tight">
           {section.heading[0]}
           <br />
           <span className="text-gradient">{section.heading[1]}</span>
         </h2>
       </div>
-      <p className="text-slate-400 text-base leading-relaxed">{section.body}</p>
+      <p className="text-text-sub text-base leading-relaxed">{section.body}</p>
 
       {section.type === 'stats' && (
         <div className="grid grid-cols-2 gap-3">
           {heroStats.map(({ value, label }) => (
-            <div key={label} className="bg-white/5 border border-white/10 rounded-xl p-4">
+            <div key={label} className="bg-surface border border-border rounded-xl p-4 shadow-card">
               <div className="font-syne font-extrabold text-2xl text-accent leading-none mb-1">{value}</div>
-              <div className="text-slate-500 text-xs leading-tight">{label}</div>
+              <div className="text-text-muted text-xs leading-tight">{label}</div>
             </div>
           ))}
         </div>
@@ -70,7 +70,7 @@ function SectionContent({ section }) {
       {section.type === 'services' && (
         <div className="grid grid-cols-2 gap-y-3 gap-x-4">
           {services.map((s) => (
-            <div key={s.id} className="flex items-center gap-2 text-slate-300 text-sm">
+            <div key={s.id} className="flex items-center gap-2 text-text-sub text-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
               {s.title}
             </div>
@@ -107,9 +107,9 @@ function DragHint() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }}
           transition={{ delay: 1.5, duration: 0.5 }}
-          className="absolute bottom-8 right-[25%] -translate-x-1/2 flex items-center gap-1.5 text-slate-400 text-xs pointer-events-none select-none z-20"
+          className="absolute bottom-8 right-[25%] -translate-x-1/2 flex items-center gap-1.5 text-text-muted text-xs pointer-events-none select-none z-20"
         >
-          <span className="w-5 h-5 rounded-full border border-white/15 inline-flex items-center justify-center text-[9px]">↺</span>
+          <span className="w-5 h-5 rounded-full border border-border inline-flex items-center justify-center text-[9px]">↺</span>
           Drag to rotate
         </motion.p>
       )}
@@ -177,30 +177,30 @@ export default function HeroGlobeSection() {
   /* ── Mobile fallback ────────────────────────────────────── */
   if (isMobile) {
     return (
-      <div className="bg-[#0D0D0D]">
+      <div className="bg-primary">
         <section className="min-h-screen flex items-center px-6 pt-10">
           <div>
             <div className="inline-flex items-center gap-2 border border-accent/30 bg-accent/5 rounded-full px-4 py-1.5 text-accent text-xs font-medium mb-6">
               <Shield className="w-3.5 h-3.5" />
               India's Trusted Cybersecurity Partner Since 2012
             </div>
-            <h1 className="font-syne font-extrabold text-4xl text-white leading-tight mb-4">
+            <h1 className="font-syne font-extrabold text-4xl text-text-base leading-tight mb-4">
               Defend What Matters.<br />
               <span className="text-gradient">Before It's Too Late.</span>
             </h1>
-            <p className="text-slate-400 text-base leading-relaxed mb-8">
+            <p className="text-text-sub text-base leading-relaxed mb-8">
               Penetration testing, 24/7 SOC monitoring, incident response, and
               compliance advisory — delivered by 50+ certified experts.
             </p>
             <div className="flex flex-col gap-3 mb-8">
-              <Link to="/contact" className="text-center bg-accent text-white font-syne font-bold px-6 py-3.5 rounded-lg text-sm">
+              <Link to="/contact" className="text-center bg-accent text-white font-syne font-bold px-6 py-3.5 rounded-lg text-sm hover:bg-accent-bright transition-colors">
                 Free Security Assessment
               </Link>
-              <Link to="/case-studies" className="text-center border border-white/15 text-slate-300 font-syne font-semibold px-6 py-3.5 rounded-lg text-sm">
+              <Link to="/case-studies" className="text-center border border-border text-text-sub font-syne font-semibold px-6 py-3.5 rounded-lg text-sm hover:bg-surface transition-colors">
                 View Case Studies
               </Link>
             </div>
-            <div className="flex flex-wrap gap-4 text-slate-500 text-xs">
+            <div className="flex flex-wrap gap-4 text-text-muted text-xs">
               {['ISO 27001', 'PCI DSS QSA', 'OSCP Team', '500+ Clients'].map((b) => (
                 <span key={b} className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-3.5 h-3.5 text-accent" />{b}
@@ -223,7 +223,7 @@ export default function HeroGlobeSection() {
     <div ref={containerRef} style={{ height: '400vh' }} className="relative">
       <div
         ref={stickyRef}
-        className="sticky top-0 h-screen overflow-hidden bg-[#0D0D0D]"
+        className="sticky top-0 h-screen overflow-hidden bg-primary"
         onMouseMove={onMouseMove}
       >
         {/* Background grid — parallax */}
@@ -234,7 +234,7 @@ export default function HeroGlobeSection() {
         {/* Radial glow */}
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at top, rgba(249,115,22,0.08) 0%, transparent 65%)' }}
+          style={{ background: 'radial-gradient(ellipse at top, var(--color-accent-light) 0%, transparent 65%)' }}
         />
 
         {/* ── Globe: slides right → left, z below text ─────── */}
@@ -268,7 +268,7 @@ export default function HeroGlobeSection() {
               India's Trusted Cybersecurity Partner Since 2012
             </motion.div>
 
-            <h1 className="font-syne font-extrabold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-white leading-tight mb-6 overflow-hidden">
+            <h1 className="font-syne font-extrabold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-text-base leading-tight mb-6 overflow-hidden">
               {"Defend What Matters. Before It's Too Late.".split(' ').map((word, i) => (
                 <motion.span
                   key={i}
@@ -287,7 +287,7 @@ export default function HeroGlobeSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-slate-400 text-lg max-w-lg leading-relaxed mb-10"
+              className="text-text-sub text-lg max-w-lg leading-relaxed mb-10"
             >
               Penetration testing, 24/7 SOC monitoring, incident response, and
               compliance advisory — delivered by 50+ certified experts with a decade
@@ -302,13 +302,13 @@ export default function HeroGlobeSection() {
             >
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-accent text-white font-syne font-bold px-8 py-4 rounded-lg hover:bg-accent/90 transition-all duration-200 hover:shadow-lg hover:shadow-accent/25 text-sm"
+                className="inline-flex items-center justify-center gap-2 bg-accent text-white font-syne font-bold px-8 py-4 rounded-lg hover:bg-accent-bright transition-all duration-200 hover:shadow-lg hover:shadow-accent-muted text-sm"
               >
                 Free Security Assessment <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/case-studies"
-                className="inline-flex items-center justify-center gap-2 border border-white/15 text-slate-300 font-syne font-semibold px-8 py-4 rounded-lg hover:bg-white/10 transition-all duration-200 text-sm"
+                className="inline-flex items-center justify-center gap-2 border border-border text-text-sub font-syne font-semibold px-8 py-4 rounded-lg hover:bg-surface transition-all duration-200 text-sm"
               >
                 View Case Studies
               </Link>
@@ -318,7 +318,7 @@ export default function HeroGlobeSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="flex flex-wrap gap-5 text-slate-500 text-xs"
+              className="flex flex-wrap gap-5 text-text-muted text-xs"
             >
               {['ISO 27001 Certified', 'PCI DSS QSA', 'OSCP Certified Team', '500+ Clients'].map((b) => (
                 <span key={b} className="flex items-center gap-1.5">
@@ -335,10 +335,10 @@ export default function HeroGlobeSection() {
           className="absolute right-0 top-0 w-1/2 h-full flex items-center px-10 xl:px-16 z-10"
         >
           {/* Vertical scroll progress line */}
-          <div className="absolute left-0 top-0 bottom-0 w-px bg-slate-200">
+          <div className="absolute left-0 top-0 bottom-0 w-px bg-border">
             <motion.div
               style={{ scaleY: scrollYProgress, transformOrigin: 'top', height: '100%' }}
-              className="w-full bg-accent/40"
+              className="w-full bg-accent"
             />
           </div>
 
@@ -361,11 +361,11 @@ export default function HeroGlobeSection() {
               <div
                 key={i}
                 className={`h-1 rounded-full transition-all duration-300 ${
-                  i === activeSection ? 'w-8 bg-accent' : 'w-2 bg-white/20'
+                  i === activeSection ? 'w-8 bg-accent' : 'w-2 bg-border-subtle'
                 }`}
               />
             ))}
-            <span className="text-slate-400 text-xs ml-1">
+            <span className="text-text-muted text-xs ml-1">
               {activeSection + 1}&thinsp;/&thinsp;{SCROLL_SECTIONS.length}
             </span>
           </div>

@@ -8,7 +8,7 @@ const caseStudies = [
   {
     id: 1,
     industry: 'BFSI',
-    industryColor: 'text-yellow-600 bg-yellow-50 border-yellow-200',
+    industryColor: 'text-warning border-warning bg-warning-bg',
     icon: '🏦',
     title: 'Stopping a Targeted Attack Before It Reached the SWIFT Network',
     client: 'A leading regional bank with 2.4 million customers',
@@ -28,7 +28,7 @@ const caseStudies = [
   {
     id: 2,
     industry: 'Healthcare',
-    industryColor: 'text-green-700 bg-green-50 border-green-200',
+    industryColor: 'text-success border-success bg-success-bg',
     icon: '🏥',
     title: 'Recovering from Ransomware in 36 Hours — Without Paying',
     client: 'A multi-specialty hospital chain with 8 facilities across South India',
@@ -48,7 +48,7 @@ const caseStudies = [
   {
     id: 3,
     industry: 'Government',
-    industryColor: 'text-blue-700 bg-blue-50 border-blue-200',
+    industryColor: 'text-accent border-accent bg-accent-muted',
     icon: '🏛️',
     title: 'Zero Non-Conformities: National Framework Compliance 3 Weeks Ahead of Deadline',
     client: 'A state government department managing services for 8 million residents',
@@ -75,7 +75,7 @@ export default function CaseStudies() {
         <div className="absolute inset-0 grid-bg opacity-40" />
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at top, rgba(249,115,22,0.08) 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(ellipse at top, var(--color-accent-light) 0%, transparent 70%)' }}
         />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
@@ -91,7 +91,7 @@ export default function CaseStudies() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-syne font-extrabold text-4xl sm:text-5xl md:text-6xl text-white mb-6"
+            className="font-syne font-extrabold text-4xl sm:text-5xl md:text-6xl text-text-base mb-6"
           >
             Results That <span className="text-gradient">Speak for Themselves</span>
           </motion.h1>
@@ -99,7 +99,7 @@ export default function CaseStudies() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed"
+            className="text-text-sub text-lg max-w-2xl mx-auto leading-relaxed"
           >
             These aren't hypothetical scenarios. They're real engagements with real organisations facing real threats — and the specific, measurable outcomes we delivered together.
           </motion.p>
@@ -116,7 +116,7 @@ export default function CaseStudies() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="bg-[#0D0D0D] border border-white/10 rounded-2xl overflow-hidden card-hover"
+              className="bg-surface border border-border rounded-2xl overflow-hidden card-hover shadow-card"
             >
               {/* Card Header */}
               <div className="p-6 sm:p-8 border-b border-white/5">
@@ -125,15 +125,15 @@ export default function CaseStudies() {
                     {cs.icon} {cs.industry}
                   </span>
                   <div className="flex gap-3 ml-auto">
-                    <span className="text-xs text-slate-500 bg-white/5 border border-white/10 px-3 py-1 rounded-full">
+                    <span className="text-xs text-text-muted bg-secondary border border-border px-3 py-1 rounded-full">
                       {cs.duration}
                     </span>
-                    <span className="text-xs text-slate-500 bg-white/5 border border-white/10 px-3 py-1 rounded-full">
+                    <span className="text-xs text-text-muted bg-secondary border border-border px-3 py-1 rounded-full">
                       {cs.team}
                     </span>
                   </div>
                 </div>
-                <h2 className="font-syne font-bold text-white text-xl sm:text-2xl mb-2">
+                <h2 className="font-syne font-bold text-text-base text-xl sm:text-2xl mb-2">
                   {cs.title}
                 </h2>
                 <p className="text-accent text-sm font-medium">{cs.client}</p>
@@ -142,32 +142,32 @@ export default function CaseStudies() {
               {/* Card Body */}
               <div className="p-6 sm:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="font-syne font-semibold text-white text-sm uppercase tracking-wider mb-3 flex items-center gap-2">
-                    <span className="w-6 h-px bg-red-400/60" />
+                  <h3 className="font-syne font-semibold text-text-base text-sm uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <span className="w-6 h-px bg-danger/60" />
                     The Situation
                   </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{cs.challenge}</p>
+                  <p className="text-text-sub text-sm leading-relaxed">{cs.challenge}</p>
                 </div>
                 <div>
-                  <h3 className="font-syne font-semibold text-white text-sm uppercase tracking-wider mb-3 flex items-center gap-2">
+                  <h3 className="font-syne font-semibold text-text-base text-sm uppercase tracking-wider mb-3 flex items-center gap-2">
                     <span className="w-6 h-px bg-accent/60" />
                     What We Did
                   </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{cs.solution}</p>
+                  <p className="text-text-sub text-sm leading-relaxed">{cs.solution}</p>
                 </div>
               </div>
 
               {/* Results */}
               <div className="px-6 sm:px-8 pb-8">
-                <h3 className="font-syne font-semibold text-white text-sm uppercase tracking-wider mb-4 flex items-center gap-2">
-                  <span className="w-6 h-px bg-green-500/60" />
+                <h3 className="font-syne font-semibold text-text-base text-sm uppercase tracking-wider mb-4 flex items-center gap-2">
+                  <span className="w-6 h-px bg-success/60" />
                   Outcomes Delivered
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {cs.results.map((result, i) => (
-                    <div key={i} className="flex items-start gap-2.5 bg-white/5 border border-white/5 rounded-lg p-3">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
-                      <span className="text-slate-300 text-sm">{result}</span>
+                    <div key={i} className="flex items-start gap-2.5 bg-secondary border border-border-subtle rounded-lg p-3">
+                      <CheckCircle2 className="w-4 h-4 text-success shrink-0 mt-0.5" />
+                      <span className="text-text-sub text-sm">{result}</span>
                     </div>
                   ))}
                 </div>
@@ -183,19 +183,19 @@ export default function CaseStudies() {
           <div
             className="rounded-2xl p-10 sm:p-14"
             style={{
-              background: 'linear-gradient(135deg, rgba(249,115,22,0.07) 0%, rgba(245,158,11,0.04) 100%)',
-              border: '1px solid rgba(249,115,22,0.2)',
+              background: 'linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-bg-secondary) 100%)',
+              border: '1px solid var(--color-border)',
             }}
           >
-            <h2 className="font-syne font-bold text-2xl sm:text-3xl text-white mb-4">
+            <h2 className="font-syne font-bold text-2xl sm:text-3xl text-text-base mb-4">
               Your Organisation Could Be Our Next Success Story
             </h2>
-            <p className="text-slate-400 text-base max-w-xl mx-auto mb-8">
+            <p className="text-text-sub text-base max-w-xl mx-auto mb-8">
               Whether you're dealing with an active incident or want to find your vulnerabilities before attackers do, our team is ready. The first conversation is free.
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 bg-accent text-white font-syne font-bold px-8 py-4 rounded-lg hover:bg-accent/90 transition-all duration-200 hover:shadow-lg hover:shadow-accent/25"
+              className="inline-flex items-center gap-2 bg-accent text-white font-syne font-bold px-8 py-4 rounded-lg hover:bg-accent-bright transition-all duration-200 hover:shadow-lg hover:shadow-accent-muted"
             >
               Start Your Engagement
               <ArrowRight className="w-5 h-5" />

@@ -119,7 +119,7 @@ export default function Team() {
         <div className="absolute inset-0 grid-bg opacity-40" />
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at top, rgba(0,229,255,0.1) 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(ellipse at top, var(--color-accent-light) 0%, transparent 70%)' }}
         />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
@@ -135,7 +135,7 @@ export default function Team() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-syne font-extrabold text-4xl sm:text-5xl md:text-6xl text-white mb-6"
+            className="font-syne font-extrabold text-4xl sm:text-5xl md:text-6xl text-text-base mb-6"
           >
             The People Behind <span className="text-gradient">Your Security</span>
           </motion.h1>
@@ -143,7 +143,7 @@ export default function Team() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed"
+            className="text-text-sub text-lg max-w-2xl mx-auto leading-relaxed"
           >
             Security is ultimately a human discipline. Every tool, every platform, every dashboard is only as good as the experts behind it. Meet the people who protect our clients — and who've dedicated their careers to staying ahead of the people who'd do them harm.
           </motion.p>
@@ -153,8 +153,8 @@ export default function Team() {
       {/* Intro */}
       <SectionWrapper className="pb-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white/[0.03] border border-white/10 rounded-xl p-8 text-center">
-            <p className="text-slate-300 leading-relaxed text-base">
+          <div className="bg-surface border border-border rounded-xl p-8 text-center shadow-card">
+            <p className="text-text-sub leading-relaxed text-base">
               Our leadership team combines decades of hands-on experience in offensive security, threat intelligence, digital forensics, cloud security, and regulatory compliance. Every member holds multiple industry certifications — OSCP, CEH, CISSP, CISA, GCIH, and cloud security credentials — and participates in active research and continuous professional development. We believe that the security professionals protecting your organisation should be as good as the people trying to breach it. We hire accordingly.
             </p>
           </div>
@@ -181,15 +181,15 @@ export default function Team() {
       </SectionWrapper>
 
       {/* Certifications Strip */}
-      <SectionWrapper className="py-16 bg-white/[0.015] border-y border-white/5">
+      <SectionWrapper className="py-16 bg-surface border-y border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-accent text-sm font-medium uppercase tracking-widest mb-4">
             Team Credentials
           </p>
-          <h2 className="font-syne font-bold text-2xl text-white mb-3">
+          <h2 className="font-syne font-bold text-2xl text-text-base mb-3">
             100+ Certifications, Collectively Held
           </h2>
-          <p className="text-slate-500 text-sm max-w-xl mx-auto mb-8">
+          <p className="text-text-muted text-sm max-w-xl mx-auto mb-8">
             Our team's credentials aren't window dressing — they're maintained through continuous training, active research, and real-world engagements that keep our skills sharp.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
@@ -200,7 +200,7 @@ export default function Team() {
             ].map((cert) => (
               <span
                 key={cert}
-                className="border border-accent/25 bg-accent/5 text-slate-300 font-syne font-medium text-xs px-4 py-2 rounded-full hover:border-accent/50 hover:text-accent transition-colors"
+                className="border border-accent-dim bg-accent-muted text-text-sub font-syne font-medium text-xs px-4 py-2 rounded-full hover:border-accent-muted hover:text-accent transition-colors"
               >
                 {cert}
               </span>

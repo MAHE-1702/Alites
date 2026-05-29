@@ -10,6 +10,7 @@ import About from './pages/About';
 import Team from './pages/Team';
 import CaseStudies from './pages/CaseStudies';
 import Contact from './pages/Contact';
+import { ThemeProvider } from './context/ThemeContext';
 
 const pageVariants = {
   initial: { opacity: 0, y: 16 },
@@ -44,14 +45,15 @@ function AnimatedRoutes() {
 
 export default function App() {
   return (
-
-    <div className="min-h-screen bg-primary text-slate-200 font-dm">
-      <Navbar />
-      <main>
-        <AnimatedRoutes />
-      </main>
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen bg-primary text-slate-200 font-dm">
+        <Navbar />
+        <main>
+          <AnimatedRoutes />
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
 
