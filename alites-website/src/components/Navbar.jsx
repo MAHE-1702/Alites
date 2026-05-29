@@ -18,17 +18,17 @@ const linkVariants = {
 };
 
 const navLinks = [
-  { label: 'Home',        to: '/' },
-  { label: 'Services',    to: '/services' },
-  { label: 'Industries',  to: '/industries' },
-  { label: 'About',       to: '/about' },
-  { label: 'Team',        to: '/team' },
-  { label: 'Case Studies',to: '/case-studies' },
-  { label: 'Contact',     to: '/contact' },
+  { label: 'Home', to: '/' },
+  { label: 'Services', to: '/services' },
+  // { label: 'Industries',  to: '/industries' },
+  { label: 'About', to: '/about' },
+  // { label: 'Team',        to: '/team' },
+  // { label: 'Case Studies',to: '/case-studies' },
+  { label: 'Contact', to: '/contact' },
 ];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen]   = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
@@ -41,17 +41,15 @@ export default function Navbar() {
   useEffect(() => { setIsOpen(false); }, [location.pathname]);
 
   const getLinkClass = ({ isActive }) =>
-    `text-sm font-medium transition-colors duration-200 relative group ${
-      isActive ? 'text-accent' : 'text-slate-400 hover:text-accent'
+    `text-sm font-medium transition-colors duration-200 relative group ${isActive ? 'text-accent' : 'text-slate-400 hover:text-accent'
     }`;
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
           ? 'bg-[#0D0D0D]/95 backdrop-blur-md border-b border-white/10 shadow-sm shadow-black/40'
           : 'bg-[#0D0D0D]/80 backdrop-blur-sm border-b border-white/5'
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -123,10 +121,9 @@ export default function Navbar() {
                     to={link.to}
                     end={link.to === '/'}
                     className={({ isActive }) =>
-                      `block px-4 py-3 rounded text-sm font-medium transition-colors duration-200 ${
-                        isActive
-                          ? 'text-accent bg-accent/10 border-l-2 border-accent'
-                          : 'text-slate-400 hover:text-accent hover:bg-accent/10'
+                      `block px-4 py-3 rounded text-sm font-medium transition-colors duration-200 ${isActive
+                        ? 'text-accent bg-accent/10 border-l-2 border-accent'
+                        : 'text-slate-400 hover:text-accent hover:bg-accent/10'
                       }`
                     }
                   >

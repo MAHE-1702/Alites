@@ -31,10 +31,10 @@ function AnimatedRoutes() {
         <Routes location={location}>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/industries" element={<Industries />} />
+          {/* <Route path="/industries" element={<Industries />} /> */}
           <Route path="/about" element={<About />} />
-          <Route path="/team" element={<Team />} />
-          <Route path="/case-studies" element={<CaseStudies />} />
+          {/* <Route path="/team" element={<Team />} /> */}
+          {/* <Route path="/case-studies" element={<CaseStudies />} /> */}
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </motion.div>
@@ -44,7 +44,7 @@ function AnimatedRoutes() {
 
 export default function App() {
   return (
-    
+
     <div className="min-h-screen bg-primary text-slate-200 font-dm">
       <Navbar />
       <main>
